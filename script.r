@@ -1,4 +1,4 @@
-#dat = read.csv("/home/john/Temp/ENEM_LEVE.csv", header = TRUE)
+dat = read.csv("ENEM_LEVE.csv", header = TRUE)
 
 # Remove candidatos que faltaram a prova de redação
 filtered_dat1 = subset(dat, IN_STATUS_REDACAO != "F")
