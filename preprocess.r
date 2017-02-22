@@ -65,8 +65,8 @@ dat <- subset(dat, select=-c(TP_COR_RACA))
 
 # Normaliza ST_CONCLUSAO em colunas de boleanos
 dat$ENSINO_MEDIO_CONCLUIDO = ifelse(dat$ST_CONCLUSAO==1, 1, 0)
-dat$ENSINO_MEDIO_EM_2013 = ifelse(dat$ST_CONCLUSAO==2, 1, 0)
-dat$ENSINO_MEDIO_DEPOIS_2013 = ifelse(dat$ST_CONCLUSAO==3, 1, 0)
+dat$ENSINO_MEDIO_EM_2012 = ifelse(dat$ST_CONCLUSAO==2, 1, 0)
+dat$ENSINO_MEDIO_DEPOIS_2012 = ifelse(dat$ST_CONCLUSAO==3, 1, 0)
 dat$ENSINO_MEDIO_NAO_FAZ = ifelse(dat$ST_CONCLUSAO==4, 1, 0)
 dat <- subset(dat, select=-c(ST_CONCLUSAO))
 
