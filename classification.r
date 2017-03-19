@@ -1,4 +1,11 @@
 dat = read.csv("ENEM_LEVE_READY.csv", header = TRUE)
+#dat <- subset(dat, select=+c(IDADE, IN_DEFICIENCIA_MENTAL, NOTA_CN, NOTA_CH, NOTA_LC, NOTA_MT, ESCOLA_PRIVADA, LOCALIZACAO_RURAL, NOTA_RED_LABEL)) # 2 (melhorou)
+#dat <- subset(dat, select=+c(IDADE, IN_DEFICIENCIA_MENTAL, NOTA_CN, NOTA_CH, NOTA_LC, NOTA_MT, ESCOLA_PRIVADA, NOTA_RED_LABEL)) # 3 (melhorou)
+#dat <- subset(dat, select=+c(IDADE, NOTA_CN, NOTA_CH, NOTA_LC, NOTA_MT, ESCOLA_PRIVADA, NOTA_RED_LABEL)) # 4 (piorou, desfazendo)
+#dat <- subset(dat, select=+c(IN_DEFICIENCIA_MENTAL, NOTA_CN, NOTA_CH, NOTA_LC, NOTA_MT, ESCOLA_PRIVADA, NOTA_RED_LABEL)) # 5 (piorou, desfazendo)
+dat <- subset(dat, select=+c(GENERO_HOMEM, IDADE, IN_DEFICIENCIA_MENTAL, NOTA_CN, NOTA_CH, NOTA_LC, NOTA_MT, ESCOLA_PRIVADA, NOTA_RED_LABEL)) # 6 (melhorou um pouco)
+#dat <- subset(dat, select=+c(ENSINO_MEDIO_CONCLUIDO, GENERO_HOMEM, IDADE, IN_DEFICIENCIA_MENTAL, NOTA_CN, NOTA_CH, NOTA_LC, NOTA_MT, ESCOLA_PRIVADA, NOTA_RED_LABEL)) # 7 (pouca diferença, desfazendo)
+#dat <- subset(dat, select=+c(ENSINO_MEDIO_NAO_FAZ, GENERO_HOMEM, IDADE, IN_DEFICIENCIA_MENTAL, NOTA_CN, NOTA_CH, NOTA_LC, NOTA_MT, ESCOLA_PRIVADA, NOTA_RED_LABEL)) # 8 (piorou um pouco, desfazendo)
 
 # Separa em dois grupos: training_dat e test_dat
 set.seed(4) # https://xkcd.com/221/
