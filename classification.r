@@ -25,7 +25,7 @@ test_ans <- data.frame(test_ans)$test_ans
 
 # Classificação utilizando KNN
 library(class)
-pred <- knn(train = training_dat, test = test_dat, cl = training_ans, k=3)
+pred <- knn(train = training_dat, test = test_dat, cl = training_ans, k=100)
 
 # Exibe os resultados
 library(gmodels)
