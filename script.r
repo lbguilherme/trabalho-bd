@@ -79,7 +79,7 @@ dev.off()
 
 png(filename="geral_candidatos-por-nota.png")
 attach(filtered_dat)
-hist(as.numeric(as.character(NU_NOTA_REDACAO)), xlab="Idade", ylab="Candidatos", breaks=40, main="")
+hist(as.numeric(as.character(NU_NOTA_REDACAO)), xlab="Nota de redação", ylab="Candidatos", breaks=40, main="")
 dev.off()
 
 # Sumário por região
@@ -107,7 +107,6 @@ display_region_summary("Nordeste", filter_by_region(filtered_dat, "2"))
 display_region_summary("Sudeste", filter_by_region(filtered_dat, "3"))
 display_region_summary("Sul", filter_by_region(filtered_dat, "4"))
 display_region_summary("Centro-Oeste", filter_by_region(filtered_dat, "5"))
-erro
 
 # Boxplots por região
 png(filename="regiao_idade.png")
