@@ -7,6 +7,13 @@ dat <- subset(dat, select=+c(GENERO_HOMEM, IDADE, IN_DEFICIENCIA_MENTAL, NOTA_CN
 #dat <- subset(dat, select=+c(ENSINO_MEDIO_CONCLUIDO, GENERO_HOMEM, IDADE, IN_DEFICIENCIA_MENTAL, NOTA_CN, NOTA_CH, NOTA_LC, NOTA_MT, ESCOLA_PRIVADA, NOTA_RED_LABEL)) # 7 (pouca diferença, desfazendo)
 #dat <- subset(dat, select=+c(ENSINO_MEDIO_NAO_FAZ, GENERO_HOMEM, IDADE, IN_DEFICIENCIA_MENTAL, NOTA_CN, NOTA_CH, NOTA_LC, NOTA_MT, ESCOLA_PRIVADA, NOTA_RED_LABEL)) # 8 (piorou um pouco, desfazendo)
 
+# Pesos
+#dat$NOTA_LC <- dat$NOTA_LC*5
+#dat$NOTA_CH <- dat$NOTA_CH*5
+#dat$NOTA_CN <- dat$NOTA_CN*4
+#dat$NOTA_MT <- dat$NOTA_MT*4
+#dat$IN_DEFICIENCIA_MENTAL <- dat$IN_DEFICIENCIA_MENTAL*5
+
 # Separa em dois grupos: training_dat e test_dat
 set.seed(4) # https://xkcd.com/221/
 idx <- sample(2, nrow(dat), replace=TRUE, prob=c(0.67, 0.33))
