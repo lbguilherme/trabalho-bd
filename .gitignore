@@ -1,3 +1,4 @@
+*.pdf
 */*.pdf
 */*.synctex.gz
 *_READY.csv
