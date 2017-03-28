@@ -324,7 +324,15 @@ As seguintes operações foram realizadas com o intuito de normalizar a base de da
 \end{itemize}
 
 \section{Classificação}
+Na etapa de classificação, utilizamos o algoritmo \emph{k-Nearest Neighbors} (\emph{k-NN}).
+Durante o treinamento desse algoritmo, todas as observações do conjunto de teste são convertidas em vetores no espaço de características.
+(Por isso, é importante que a etapa de pré-processamento gere apenas atributos numéricos.)
+Depois disso, sempre que uma nova observação precisa ser classificada, são identificadas as $k$ observações mais próximas dela no conjunto de treinamento (no nosso caso, de acordo com a distância de Euclides).
+A classe predita é simplesmente a classe mais frequente dentre essas $k$ observações.
+
+
+
 %TODO: falar dos grupos
-Para a classificação, utilizamos o algoritmo \emph{k-Nearest Neighbors} (\emph{k-NN}).
+%todos os atributos relevantes (necessariamente numéricos) são convertidos
 
 \end{document}
