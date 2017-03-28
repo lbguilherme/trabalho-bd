@@ -45,8 +45,9 @@ Finalmente, refinamos o algoritmo desenvolvido através de experimentos e analisa
 
 \section{Análise estatística}
 O primeiro passo da análise estatística consistiu no estudo isolado dos principais atributos da base (idade, sexo, região, localização, tipo de escola e nota de redação).
-Em seguida, foi feita uma comparação entre as idades e as notas de redação dos candidatos de cada região do país.
-Finalmente, analisamos a correlação entre a nota de redação e diversos outros atributos (idade, sexo, tipo de escola, localização, ano de conclusão do Ensino Médio, notas nas demais provas, deficiência mental e deficiência física).
+%Em seguida, foi feita uma comparação entre as idades e as notas de redação dos candidatos de cada região do país.
+%Finalmente, analisamos a correlação entre a nota de redação e diversos outros atributos (idade, sexo, tipo de escola, localização, ano de conclusão do Ensino Médio, notas nas demais provas, deficiência mental e deficiência física).
+Em seguida, analisamos a correlação entre a nota de redação e diversos outros atributos (idade, sexo, tipo de escola, tipo de localização, ano de conclusão do Ensino Médio, notas nas demais provas, deficiência mental e deficiência física).
 
 Como o objetivo final deste trabalho foi o desenvolvimento de um algoritmo de predição da nota de redação, descartamos os candidatos que não fizeram essa prova (14.672 dentre 50.000).
 Em seguida, removemos dois \emph{outliers} de acordo com a idade: um candidato de 7 anos e outro de 114 anos.
@@ -65,14 +66,14 @@ Além disso, como mostra \reffig{candidatos-por-sexo}, há mais candidatos do sexo
 
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
-    \includegraphics[width=\linewidth]{../geral_candidatos-por-idade.png}
+    \includegraphics[width=.9\linewidth]{../geral_candidatos-por-idade.png}
     \caption{Candidatos por idade.}
     \label{fig:candidatos-por-idade}
     \end{figure}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
-    \includegraphics[width=\linewidth]{../geral_candidatos-por-sexo.png}
+    \includegraphics[width=.9\linewidth]{../geral_candidatos-por-sexo.png}
     \caption{Candidatos por sexo.}
     \label{fig:candidatos-por-sexo}
     \end{figure}
@@ -85,14 +86,14 @@ Além disso, de acordo com a \reffig{candidatos-por-localizacao}, a maioria dos c
 Dentre aqueles que informaram, no entanto, a enorme maioria vive na zona urbana.
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
-    \includegraphics[width=\linewidth]{../geral_candidatos-por-regiao.png}
+    \includegraphics[width=.9\linewidth]{../geral_candidatos-por-regiao.png}
     \caption{Candidatos por região.}
     \label{fig:candidatos-por-regiao}
     \end{figure}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
-    \includegraphics[width=\linewidth]{../geral_candidatos-por-localizacao.png}
+    \includegraphics[width=.9\linewidth]{../geral_candidatos-por-localizacao.png}
     \caption{Candidatos por localização.}
     \label{fig:candidatos-por-localizacao}
     \end{figure}
@@ -120,6 +121,7 @@ Dos 35.326 canditados, apenas 1507 (4.27\%) obtiveram nota abaixo de 200 e apena
 \end{figure}
 \end{minipage}
 
+\iffalse
 \subsection{Estatísticas por região}
 O próximo passo consistiu em gerar estatísticas separadas para cada região, visando a identificação de possíveis associações entre a região do candidado e demais atributos.
 Os resultados são apresentados a seguir.
@@ -175,6 +177,7 @@ A \reftab{nota-por-regiao} e a \reffig{nota-por-regiao} revelam uma leve associa
     \label{fig:nota-por-regiao}
     \end{figure}
 \end{minipage}
+\fi
 
 \subsection{Análise de correlações}
 Finalmente, elegemos alguns atributos para avaliar a existência de possíveis correlações com as notas de redação.
@@ -186,16 +189,16 @@ A \reffig{correlacao-idade} apresenta as notas de redação em função da idade dos
 De fato, o coeficiente de correlação de Pearson entre essas duas variáveis vale aproximadamente $-0.11$, o que confirma essa hipótese.
 
 \begin{figure}[H]
-\centering\includegraphics[width=.6\linewidth]{../correlacao_idade.png}
+\centering\includegraphics[width=.5\linewidth]{../correlacao_idade.png}
 \caption{Notas de redação em função da idade.}
 \label{fig:correlacao-idade}
 \end{figure}
 
 \subsubsection{Sexo}
-A \reffig{correlacao-sexo} indica que não há diferenças significativas de desempenho entre candidatos do sexo masculino e do sexo feminino.
+A \reffig{correlacao-sexo} indica que a diferença de desempenho entre candidatos do sexo masculino e do sexo feminino é pequena.
 
 \begin{figure}[H]
-\centering\includegraphics[width=.6\linewidth]{../correlacao_sexo.png}
+\centering\includegraphics[width=.5\linewidth]{../correlacao_sexo.png}
 \caption{Distribuição das notas de redação para candidatos de cada sexo.}
 \label{fig:correlacao-sexo}
 \end{figure}
@@ -218,7 +221,7 @@ Na subseção~\ref{subsec:estatisticas-gerais}, mostramos que, dentre os candidato
 A semelhança, na \reffig{correlacao-localizacao}, entre os gráficos dos candidatos que vivem na zona urbana e dos candidatos que não informaram a localização é um possível indício de que a maioria dos candidatos que não informaram localização também vive na zona urbana.
 
 \begin{figure}[H]
-\centering\includegraphics[width=.45\linewidth]{../correlacao_localizacao.png}
+\centering\includegraphics[width=.44\linewidth]{../correlacao_localizacao.png}
 \caption{Distribuição das notas de redação para estudantes da zona urbana e da zona rural.}
 \label{fig:correlacao-localizacao}
 \end{figure}
@@ -226,7 +229,7 @@ A semelhança, na \reffig{correlacao-localizacao}, entre os gráficos dos candidat
 \subsubsection{Ano de conclusão do Ensino Médio}
 A \reffig{correlacao-ano-concluiu} aponta para a inexistência de correlação significativa entre a nota da redação e o ano no qual o candidato concluiu o Ensino Médio.\footnote{O valor ``.'' indica que o ano de conclusão do Ensino Médio não foi informado.}
 \begin{figure}[H]
-\centering\includegraphics[width=.45\linewidth]{../correlacao_ano_concluiu.png}
+\centering\includegraphics[width=.44\linewidth]{../correlacao_ano_concluiu.png}
 \caption{Distribuição das notas de redação em função do ano de conclusão do Ensino Médio.}
 \label{fig:correlacao-ano-concluiu}
 \end{figure}
@@ -239,31 +242,29 @@ Ainda de acordo com a \reftab{coeficiente-pearson-por-prova}, a maior correlação
 
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
-    \centering\includegraphics[width=\linewidth]{../correlacao_nota_ch.png}
+    \centering\includegraphics[width=.86\linewidth]{../correlacao_nota_ch.png}
     \caption{Notas de redação em função das notas em Ciências Humanas.}
     \label{fig:correlacao-nota-ch}
     \end{figure}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
-    \centering\includegraphics[width=\linewidth]{../correlacao_nota_cn.png}
+    \centering\includegraphics[width=.86\linewidth]{../correlacao_nota_cn.png}
     \caption{Notas de redação em função das notas em Ciências da Natureza.}
     \label{fig:correlacao-nota-cn}
     \end{figure}
 \end{minipage}
 
-\vspace{2cm}
-
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
-    \centering\includegraphics[width=\linewidth]{../correlacao_nota_lc.png}
+    \centering\includegraphics[width=.86\linewidth]{../correlacao_nota_lc.png}
     \caption{Notas de redação em função das notas em Linguagens e Códigos.}
     \label{fig:correlacao-nota-lc}
     \end{figure}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
-    \centering\includegraphics[width=\linewidth]{../correlacao_nota_mt.png}
+    \centering\includegraphics[width=.86\linewidth]{../correlacao_nota_mt.png}
     \caption{Notas de redação em função das notas em Matemática.}
     \label{fig:correlacao-nota-mt}
     \end{figure}
@@ -285,7 +286,7 @@ Ainda de acordo com a \reftab{coeficiente-pearson-por-prova}, a maior correlação
 A \reffig{correlacao-deficiencia-mental} indica que candidatos com deficiência mental apresentam desempenho significativamente inferior nas provas de redação.
 
 \begin{figure}[H]
-\centering\includegraphics[width=.55\linewidth]{../correlacao_deficiencia_mental.png}
+\centering\includegraphics[width=.5\linewidth]{../correlacao_deficiencia_mental.png}
 \caption{Distribuição das notas de redação para candidatos com e sem deficiência mental.}
 \label{fig:correlacao-deficiencia-mental}
 \end{figure}
@@ -294,9 +295,31 @@ A \reffig{correlacao-deficiencia-mental} indica que candidatos com deficiência m
 A \reffig{correlacao-deficiencia-fisica} indica que a nota mediana de redação dos candidatos com deficiência física é aproximadamente igual à nota mediana de redação dos candidatos sem deficiência física (em torno de 500).
 No entanto, a proporção de candidatos com nota acima de 500 é menor para portadores de deficiência física.
 \begin{figure}[H]
-\centering\includegraphics[width=.55\linewidth]{../correlacao_deficiencia_fisica.png}
+\centering\includegraphics[width=.5\linewidth]{../correlacao_deficiencia_fisica.png}
 \caption{Distribuição das notas de redação para candidatos com e sem deficiência física.}
 \label{fig:correlacao-deficiencia-fisica}
 \end{figure}
+
+\section{Pré-processamento}
+Nesta etapa, preparamos a base de dados para utilização no algoritmo de classificação.
+Optamos por remover colunas majoritariamente por razões técnicas (número de identificação do candidato, por exemplo, além de outros campos descritos a seguir). Consequentemente, colunas que simplesmente suspeitamos serem poucos relevantes para a classificação, devido à análise estatística previamente realizada, foram mantidas.
+Essa abordagem permitiu que a análise estatística atuasse como um guia durante o desenvolvimento do algoritmo de classificação, ao invés de determinar completamente os dados nele utilizados.
+As seguintes operações foram realizadas com o intuito de normalizar a base de dados:
+
+%TODO: mencionar as classes mais cedo
+\begin{itemize}
+    \item Foi criada a coluna UF\_INSC\_IGUAL\_PROVA, que guarda ``1'' se UF\_INSC for igual ao UF\_MUNICIPIO\_PROVA, indicando que o candidato não mudou de estado para fazer a prova. ``0'' caso contrário.
+    \item UF\_INSC foi expandido para um total de 26 colunas, cada uma contendo ``1'' ou ``0'' para indicar se o candidato fez a prova nesse estado ou não. Nenhum candidato poder ter mais de um estado marcado como ``1''. Informações adicionais sobre a localização do candidato (nome do município, código do municício, etc.) foram removidas.
+    \item De forma similar, TP\_SEXO foi expandido para duas colunas: GENERO\_HOMEM e GENERO\_MULHER, com apenas uma delas sendo marcada como ``1''.
+    \item As colunas NOTA\_CN, NOTA\_CH, NOTA\_LC e NOTA\_MT passaram a guardar a nota do candidato em cada uma das provas. Para que o valor seja consistente de 0 a 1, essa nota foi dividida por 1000.
+    \item Várias colunas que guardavam as opções marcadas pelo candidato, gabarito, identificação da prova e afins foram removidas por serem irrelevantes para obtenção do resultado.
+    \item A coluna TP\_ESCOLA foi expandida para duas colunas: ESCOLA\_PUBLICA e ESCOLA\_PRIVADA. Para a maioria dos candidatos, o tipo de escola não foi informado, e portanto ambas as colunas apresentam valor falso. Demais informações sobre a escola e a entidade certificadora do candidato (nome, município, etc.) foram removidas.
+    Analogamente, a coluna  ID\_LOCALIZACAO foi expandida para duas colunas: LOCALIZACAO\_URBANA e LOCALIZACAO\_RURAL. Para a maioria dos candidatos, o tipo de localização não foi informado, e portanto ambas as colunas apresentam valor falso.
+    \item A idade foi normalizada para valores de 0 a 1 através de uma divisão por 100. Dessa forma, a menor idade passou a ser 0.12 e a maior idade passou a ser 0.70.
+    \item TP\_COR\_RACA foi dividido em 5 colunas, uma com cada cor/raça. Cada uma possui ``1'' se ela é verdadeira para o candidato. Nenhum candidato tem duas dessas colunas como verdadeiras.
+    \item Analogamente, TP\_ESTADO\_CIVIL foi dividido em 4 colunas booleanas: ESTADO\_CIVIL\_SOLTEIRO, ESTADO\_CIVIL\_CASADO, ESTADO\_CIVIL\_DIVORCIADO e ESTADO\_CIVIL\_VIUVO.
+    \item ST\_CONCLUSAO foi dividido em 4 colunas seguindo o mesmo princípio: ENSINO\_MEDIO\_CONCLUIDO (alunos que já haviam concluído o Ensino Médio quando a prova foi aplicada), ENSINO\_MEDIO\_EM\_2012 (alunos que estavam concluindo o Ensimo Médio no mesmo ano de aplicação da prova), ENSINO\_MEDIO\_DEPOIS\_2012 (alunos que só concluiríam o Ensino Médio em anos posteriores à aplicação da prova) e ENSINO\_MEDIO\_NAO\_FAZ (alunos que nem haviam concluído previamente nem estavam cursando o Ensino Médio). O ano exato de conclusão do Ensino Médio, quando informado, foi descartado. 
+    \item Por fim, a nota da redação foi dividida nos 4 grupos anteriormente cidados:  ``ruim'', ``regular'', ``boa'' e ``ótima''.
+\end{itemize}
 
 \end{document}
