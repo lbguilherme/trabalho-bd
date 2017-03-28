@@ -36,8 +36,8 @@
 \begin{resumo}
 Neste trabalho, tomamos como base o algoritmo k-Nearest Neighbors (k-NN) para a predição da nota de redação na base de microdados do ENEM 2012.
 O primeiro passo consistiu na realização de uma análise estatística sobre a base de dados.
-Em seguida, preparamos a base para a aplicação do algoritmo de regressão.
-Depois disso, amparados na análise estatística previamente realizada, desenvolvemos uma versão inicial do algoritmo de regressão.
+Em seguida, preparamos a base para a aplicação do algoritmo de classificação.
+Depois disso, amparados na análise estatística previamente realizada, desenvolvemos uma versão inicial do algoritmo de classificação.
 Finalmente, refinamos o algoritmo desenvolvido através de experimentos e analisamos a sua acurácia.
 \end{resumo}
 
@@ -235,7 +235,7 @@ A \reffig{correlacao-ano-concluiu} aponta para a inexistência de correlação sign
 \end{figure}
 
 \subsubsection{Notas nas demais provas}
-As Figuras~\ref{fig:correlacao-nota-ch}--\ref{fig:correlacao-nota-mt} apresentam uma forte evidência da existência de correlação linear positiva entre as notas obtidas pelos candidatos em redação e nas demais provas.
+As Figuras~\ref{fig:correlacao-nota-ch}--\ref{fig:correlacao-nota-mt} apresentam uma forte evidência da existência de correlação positiva entre as notas obtidas pelos candidatos em redação e nas demais provas.
 De fato, os coeficientes de correlação de Pearson apresentados na \reftab{coeficiente-pearson-por-prova} confirmam essa hipótese.
 Ainda de acordo com a \reftab{coeficiente-pearson-por-prova}, a maior correlação ocorre com as provas de Ciências Humanas e Linguagens e Códigos.
 %TODO: footnote dizendo que foram desconsiderados candidatos que faltaram
@@ -301,6 +301,7 @@ No entanto, a proporção de candidatos com nota acima de 500 é menor para portado
 \end{figure}
 
 \section{Pré-processamento}
+%TODO: descrevr apenas o que e relevante
 Nesta etapa, preparamos a base de dados para utilização no algoritmo de classificação.
 Optamos por remover colunas majoritariamente por razões técnicas (número de identificação do candidato, por exemplo, além de outros campos descritos a seguir). Consequentemente, colunas que simplesmente suspeitamos serem poucos relevantes para a classificação, devido à análise estatística previamente realizada, foram mantidas.
 Essa abordagem permitiu que a análise estatística atuasse como um guia durante o desenvolvimento do algoritmo de classificação, ao invés de determinar completamente os dados nele utilizados.
@@ -321,5 +322,9 @@ As seguintes operações foram realizadas com o intuito de normalizar a base de da
     \item ST\_CONCLUSAO foi dividido em 4 colunas seguindo o mesmo princípio: ENSINO\_MEDIO\_CONCLUIDO (alunos que já haviam concluído o Ensino Médio quando a prova foi aplicada), ENSINO\_MEDIO\_EM\_2012 (alunos que estavam concluindo o Ensimo Médio no mesmo ano de aplicação da prova), ENSINO\_MEDIO\_DEPOIS\_2012 (alunos que só concluiríam o Ensino Médio em anos posteriores à aplicação da prova) e ENSINO\_MEDIO\_NAO\_FAZ (alunos que nem haviam concluído previamente nem estavam cursando o Ensino Médio). O ano exato de conclusão do Ensino Médio, quando informado, foi descartado. 
     \item Por fim, a nota da redação foi dividida nos 4 grupos anteriormente cidados:  ``ruim'', ``regular'', ``boa'' e ``ótima''.
 \end{itemize}
+
+\section{Classificação}
+%TODO: falar dos grupos
+Para a classificação, utilizamos o algoritmo \emph{k-Nearest Neighbors} (\emph{k-NN}).
 
 \end{document}
