@@ -338,9 +338,11 @@ Depois disso, sempre que uma nova observação precisa ser classificada, são ident
 A classe predita é simplesmente a classe mais frequente dentre essas $k$ observações.
 Em todos os experimentos realizados, utilizamos $\nicefrac{2}{3}$ da base para treinamento e o restante para avaliação do algoritmo.
 
+Amparados na análise estatística previamente realizada, elegemos um conjunto inicial de atributos que julgamos relevantes para a classificação: IDADE, IN\_DEFICIENCIA\_MENTAL, NOTA\_CN, NOTA\_CH, NOTA\_LC, NOTA\_MT, ESCOLA\_PRIVADA e LOCALIZACAO\_RURAL.
+Em seguida, refinamos essa seleção inicial através de experimentos envolvendo a inserção e a remoção de atributos, sempre utilizando $k=3$.
+O conjunto de atributos que apresentou melhor resultado foi o seguinte: GENERO\_HOMEM, IDADE, IN\_DEFICIENCIA\_MENTAL, NOTA\_CN, NOTA\_CH, NOTA\_LC, NOTA\_MT e ESCOLA\_PRIVADA.
 
+Finalmente, avaliamos a acurácia do algoritmo desenvolvido com diferentes valores $k$. %blablabla
 
-%TODO: falar dos grupos
-%todos os atributos relevantes (necessariamente numéricos) são convertidos
 
 \end{document}
