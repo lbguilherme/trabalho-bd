@@ -17,7 +17,7 @@
      
 \sloppy
 
-\title{Predição da nota de redação na base de microdados do ENEM 2012 utilizando o algoritmo \emph{k-Nearest Neighbors}}
+\title{Classificação da nota de redação na base de microdados do ENEM 2012 utilizando o algoritmo \emph{k-Nearest Neighbors}}
 
 \author{Jonathan Coutinho Luz de Queiroz\inst{1} \\ Guilherme Lima Bernal\inst{1}}
 \address{Instituto de Matemática -- Universidade Federal da Bahia (UFBA)
@@ -42,6 +42,7 @@ Finalmente, refinamos o algoritmo desenvolvido através de experimentos e analisa
 \end{resumo}
 
 \section{Introdução}
+%TODO: write this
 
 \section{Análise estatística}
 O primeiro passo da análise estatística consistiu no estudo isolado dos principais atributos da base (idade, sexo, região, localização, tipo de escola e nota de redação).
@@ -301,34 +302,41 @@ No entanto, a proporção de candidatos com nota acima de 500 é menor para portado
 \end{figure}
 
 \section{Pré-processamento}
-%TODO: descrevr apenas o que e relevante
 Nesta etapa, preparamos a base de dados para utilização no algoritmo de classificação.
-Optamos por remover colunas majoritariamente por razões técnicas (número de identificação do candidato, por exemplo, além de outros campos descritos a seguir). Consequentemente, colunas que simplesmente suspeitamos serem poucos relevantes para a classificação, devido à análise estatística previamente realizada, foram mantidas.
-Essa abordagem permitiu que a análise estatística atuasse como um guia durante o desenvolvimento do algoritmo de classificação, ao invés de determinar completamente os dados nele utilizados.
-As seguintes operações foram realizadas com o intuito de normalizar a base de dados:
+Optamos por remover colunas majoritariamente por razões técnicas (número de identificação do candidato, por exemplo, além de outros campos descritos a seguir). Consequentemente, colunas que simplesmente suspeitávamos serem poucos relevantes para a classificação, devido à análise estatística previamente realizada, foram mantidas.
+Essa abordagem permitiu que a análise estatística atuasse como um guia durante o desenvolvimento do algoritmo de classificação, ao invés de determinar completamente os atributos nele utilizados.
 
-%TODO: mencionar as classes mais cedo
+De forma geral, atributos numéricos foram mapeados para um subintervalo de [0, 1] de forma a torná-los aproximadamente igualmente relevantes para a classificação, pelo menos a princípio.
+Caso isso não fosse feito, atributos associados a intervalos de valores mais amplos (particularmente as notas nas provas objetivas) execeriam maior influência que os demais.
+Similarmente, atributos qualitativos nominais com $C > 2$ categorias foram separados em $C$ atributos booleanos.
+Isso foi feito porque a atribuição arbitrária de valores numéricos a cada uma das categorias induziria uma ordenação indevida entre essas categorias.
+As operações realizadas durante a normalização são descritas mais detalhadamente a seguir.
+
 \begin{itemize}
     \item Foi criada a coluna UF\_INSC\_IGUAL\_PROVA, que guarda ``1'' se UF\_INSC for igual ao UF\_MUNICIPIO\_PROVA, indicando que o candidato não mudou de estado para fazer a prova. ``0'' caso contrário.
     \item UF\_INSC foi expandido para um total de 26 colunas, cada uma contendo ``1'' ou ``0'' para indicar se o candidato fez a prova nesse estado ou não. Nenhum candidato poder ter mais de um estado marcado como ``1''. Informações adicionais sobre a localização do candidato (nome do município, código do municício, etc.) foram removidas.
     \item De forma similar, TP\_SEXO foi expandido para duas colunas: GENERO\_HOMEM e GENERO\_MULHER, com apenas uma delas sendo marcada como ``1''.
-    \item As colunas NOTA\_CN, NOTA\_CH, NOTA\_LC e NOTA\_MT passaram a guardar a nota do candidato em cada uma das provas. Para que o valor seja consistente de 0 a 1, essa nota foi dividida por 1000.
+    \item As colunas NOTA\_CN, NOTA\_CH, NOTA\_LC e NOTA\_MT passaram a guardar a nota do candidato em cada uma das provas. Para que o valor fosse consistente de 0 a 1, essa nota foi dividida por 1000.
     \item Várias colunas que guardavam as opções marcadas pelo candidato, gabarito, identificação da prova e afins foram removidas por serem irrelevantes para obtenção do resultado.
-    \item A coluna TP\_ESCOLA foi expandida para duas colunas: ESCOLA\_PUBLICA e ESCOLA\_PRIVADA. Para a maioria dos candidatos, o tipo de escola não foi informado, e portanto ambas as colunas apresentam valor falso. Demais informações sobre a escola e a entidade certificadora do candidato (nome, município, etc.) foram removidas.
-    Analogamente, a coluna  ID\_LOCALIZACAO foi expandida para duas colunas: LOCALIZACAO\_URBANA e LOCALIZACAO\_RURAL. Para a maioria dos candidatos, o tipo de localização não foi informado, e portanto ambas as colunas apresentam valor falso.
+    \item A coluna TP\_ESCOLA foi expandida para duas colunas: ESCOLA\_PUBLICA e ESCOLA\_PRIVADA. Para a maioria dos candidatos, o tipo de escola não foi informado, e portanto ambas as colunas ficaram com valor falso. Demais informações sobre a escola e a entidade certificadora do candidato (nome, município, etc.) foram removidas.
+    Analogamente, a coluna  ID\_LOCALIZACAO foi expandida para duas colunas: LOCALIZACAO\_URBANA e LOCALIZACAO\_RURAL. Para a maioria dos candidatos, o tipo de localização não foi informado, e portanto ambas as colunas ficaram com valor falso.
     \item A idade foi normalizada para valores de 0 a 1 através de uma divisão por 100. Dessa forma, a menor idade passou a ser 0.12 e a maior idade passou a ser 0.70.
     \item TP\_COR\_RACA foi dividido em 5 colunas, uma com cada cor/raça. Cada uma possui ``1'' se ela é verdadeira para o candidato. Nenhum candidato tem duas dessas colunas como verdadeiras.
     \item Analogamente, TP\_ESTADO\_CIVIL foi dividido em 4 colunas booleanas: ESTADO\_CIVIL\_SOLTEIRO, ESTADO\_CIVIL\_CASADO, ESTADO\_CIVIL\_DIVORCIADO e ESTADO\_CIVIL\_VIUVO.
-    \item ST\_CONCLUSAO foi dividido em 4 colunas seguindo o mesmo princípio: ENSINO\_MEDIO\_CONCLUIDO (alunos que já haviam concluído o Ensino Médio quando a prova foi aplicada), ENSINO\_MEDIO\_EM\_2012 (alunos que estavam concluindo o Ensimo Médio no mesmo ano de aplicação da prova), ENSINO\_MEDIO\_DEPOIS\_2012 (alunos que só concluiríam o Ensino Médio em anos posteriores à aplicação da prova) e ENSINO\_MEDIO\_NAO\_FAZ (alunos que nem haviam concluído previamente nem estavam cursando o Ensino Médio). O ano exato de conclusão do Ensino Médio, quando informado, foi descartado. 
-    \item Por fim, a nota da redação foi dividida nos 4 grupos anteriormente cidados:  ``ruim'', ``regular'', ``boa'' e ``ótima''.
+    \item ST\_CONCLUSAO foi dividido em 4 colunas seguindo o mesmo princípio: ENSINO\_MEDIO\_CONCLUIDO (alunos que já haviam concluído o Ensino Médio quando a prova foi aplicada), ENSINO\_MEDIO\_EM\_2012 (alunos que estavam concluindo o Ensimo Médio no mesmo ano de aplicação da prova), ENSINO\_MEDIO\_DEPOIS\_2012 (alunos que só concluiríam o Ensino Médio em anos posteriores à aplicação da prova) e ENSINO\_MEDIO\_NAO\_FAZ (alunos que nem haviam concluído previamente nem estavam cursando o Ensino Médio). O ano exato de conclusão do Ensino Médio, quando informado, foi descartado.
 \end{itemize}
 
 \section{Classificação}
-Na etapa de classificação, utilizamos o algoritmo \emph{k-Nearest Neighbors} (\emph{k-NN}).
-Durante o treinamento desse algoritmo, todas as observações do conjunto de teste são convertidas em vetores no espaço de características.
+O objetivo final do trabalho foi a classificação dos candidatos em quatro classes, de acordo com a nota obtida na prova de redação: ``ruim'', ``regular'', ``boa'' e ``ótima''.
+A determinação da classe de cada candidato foi feita através da divisão do dataset original em quartis: candidatos no primeiro quartil foram classificados como ótimos, candidatos no segundo quartil como bons, e assim por diante.
+Esse processo resulta em uma divisão equitativa dos candidatos em classes, e consequentemente simplifica uma avaliação justa do algoritmo de classificação desenvolvido.
+
+O algoritmo de classificação utilizado foi o \emph{k-Nearest Neighbors} (\emph{k-NN}).
+Durante o treinamento desse algoritmo, todas as observações do conjunto de treinamento são convertidas em vetores no espaço de características.
 (Por isso, é importante que a etapa de pré-processamento gere apenas atributos numéricos.)
 Depois disso, sempre que uma nova observação precisa ser classificada, são identificadas as $k$ observações mais próximas dela no conjunto de treinamento (no nosso caso, de acordo com a distância de Euclides).
 A classe predita é simplesmente a classe mais frequente dentre essas $k$ observações.
+Em todos os experimentos realizados, utilizamos $\nicefrac{2}{3}$ da base para treinamento e o restante para avaliação do algoritmo.
 
 
 
