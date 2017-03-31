@@ -317,5 +317,27 @@ caso cada qualidade foi em uma coluna com característica boleana, que armazena 
 Dessa forma uma coluna que antes guadava o estado de origem do candidato agora é transformada em 26 colunas, onde apenas
 uma armazena 1.
 
+A escolha de um valor ideal para a constante k depende de como estão distribuidos os dados de treinamento, bem como do
+número de amostras. Utilizar um valor muito baixo causa com que bem poucos valores sejam considerados para calcular a
+classificação, gerando aberrações especialmente nos pontos extremos. Utilizar um valor alto demais faz com que a
+localidade seja perdida, favorecendo mínimos e máximos globais.
+
+\begin{figure}[H]
+\centering\includegraphics[width=.55\linewidth]{tab1.png}
+\caption{Análise dos resultados obtidos ao utilizar k=1.}
+\label{fig:tab1}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=.55\linewidth]{tab10.png}
+\caption{Análise dos resultados obtidos ao utilizar k=10.}
+\label{fig:tab10}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=.55\linewidth]{tab100.png}
+\caption{Análise dos resultados obtidos ao utilizar k=100.}
+\label{fig:tab100}
+\end{figure}
 
 \end{document}
