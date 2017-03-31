@@ -341,9 +341,47 @@ Em todos os experimentos realizados, utilizamos $\nicefrac{2}{3}$ da base para t
 Amparados na análise estatística previamente realizada, elegemos um conjunto inicial de atributos que julgamos relevantes para a classificação: IDADE, IN\_DEFICIENCIA\_MENTAL, NOTA\_CN, NOTA\_CH, NOTA\_LC, NOTA\_MT, ESCOLA\_PRIVADA e LOCALIZACAO\_RURAL.
 Em seguida, refinamos essa seleção inicial através de experimentos envolvendo a inserção e a remoção de atributos, sempre utilizando $k=3$.
 O conjunto de atributos que apresentou melhor resultado foi o seguinte: GENERO\_HOMEM, IDADE, IN\_DEFICIENCIA\_MENTAL, NOTA\_CN, NOTA\_CH, NOTA\_LC, NOTA\_MT e ESCOLA\_PRIVADA.
-%TODO: falar dos pesos tbm
+Também experimentamos multiplicar os valores de alguns atributos (em especial, notas nas provas objetivas) por números reais maiores que um, de forma a atribuir-lhes maior peso, mas não houve melhora significativa no resultado.
 
-Finalmente, avaliamos a acurácia do algoritmo desenvolvido com diferentes valores $k$. %blablabla
+Finalmente, avaliamos a acurácia do algoritmo desenvolvido com diferentes valores de $k$.
+As Fig.~\ref{fig:tab1}--\ref{fig:tab100} mostram, para todos os pares de classes $(X, Y)$, quantos candidatos da classe $X$ foram classificados como sendo da classe $Y$.
+As Fig.~\ref{fig:graf1}--\ref{fig:graf100} sumarizam os tipos de erros cometidos pelo algoritmo.
+Os gráficos evidenciam que, em geral, a acurácia do algoritmo aumenta com o valor de $k$.
 
+\begin{figure}[H]
+\centering\includegraphics[width=.60\linewidth]{plot-white1.png}
+\caption{Análise dos resultados obtidos pelo \emph{k-NN} com k=1.}
+\label{fig:tab1}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=.60\linewidth]{plot-white10.png}
+\caption{Análise dos resultados obtidos pelo \emph{k-NN} com k=10.}
+\label{fig:tab10}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=.60\linewidth]{plot-white100.png}
+\caption{Análise dos resultados obtidos pelo \emph{k-NN} com k=100.}
+\label{fig:tab100}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=.65\linewidth]{graf-white1.png}
+\caption{Classificações por tipo de erro do \emph{k-NN} com k=1.}
+\label{fig:graf1}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=.65\linewidth]{graf-white10.png}
+\caption{Classificações por tipo de erro do \emph{k-NN} com k=10.}
+\label{fig:graf10}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=.65\linewidth]{graf-white100.png}
+\caption{Classificações por tipo de erro do \emph{k-NN} com k=100.}
+\label{fig:graf100}
+\end{figure}
 
 \end{document}
