@@ -4,7 +4,7 @@
 
 \usepackage{graphicx,url}
 
-%\usepackage[brazil]{babel} 
+%\usepackage[brazil]{babel}
 \usepackage[latin1]{inputenc}
 \usepackage{nicefrac}
 % Change paragraph identation
@@ -14,13 +14,13 @@
 \usepackage{float}
 
 
-     
+
 \sloppy
 
-\title{Mineração de dados --- Classificação \\ Análise estatística da base de microdados do ENEM 2012}
+\title{Mineraï¿½ï¿½o de dados --- Classificaï¿½ï¿½o \\ Anï¿½lise estatï¿½stica da base de microdados do ENEM 2012}
 
 \author{Jonathan Coutinho Luz de Queiroz\inst{1} \\ Guilherme Lima Bernal\inst{1}}
-\address{Instituto de Matemática -- Universidade Federal da Bahia (UFBA)
+\address{Instituto de Matemï¿½tica -- Universidade Federal da Bahia (UFBA)
 \email{jonathanqueiroz@dcc.ufba.br}
 }
 
@@ -29,32 +29,32 @@
 
 \geometry{lmargin=2.2cm, rmargin=2.2cm, tmargin=2.2cm, bmargin=2.2cm}
 \setlength\tabcolsep{4pt}
-\begin{document} 
+\begin{document}
 
 \maketitle
 
 \begin{resumo}
-Nesta atividade, realizamos uma análise estatística da base de microdados do ENEM 2012, a qual servirá de amparo para o desenvolvimento de um algoritmo de predição da nota de redação.
-O primeiro passo consistiu no estudo isolado dos seus principais atributos (idade, sexo, região, localização, tipo de escola e nota de redação).
-Em seguida, foi feita uma comparação entre as idades e as notas de redação dos candidatos de cada região do país.
-Finalmente, analisamos a correlação entre a nota de redação e diversos outros atributos (idade, sexo, tipo de escola, localização, ano de conclusão do Ensino Médio, notas nas demais provas, deficiência mental e deficiência física).
+Nesta atividade, realizamos uma anï¿½lise estatï¿½stica da base de microdados do ENEM 2012, a qual servirï¿½ de amparo para o desenvolvimento de um algoritmo de prediï¿½ï¿½o da nota de redaï¿½ï¿½o.
+O primeiro passo consistiu no estudo isolado dos seus principais atributos (idade, sexo, regiï¿½o, localizaï¿½ï¿½o, tipo de escola e nota de redaï¿½ï¿½o).
+Em seguida, foi feita uma comparaï¿½ï¿½o entre as idades e as notas de redaï¿½ï¿½o dos candidatos de cada regiï¿½o do paï¿½s.
+Finalmente, analisamos a correlaï¿½ï¿½o entre a nota de redaï¿½ï¿½o e diversos outros atributos (idade, sexo, tipo de escola, localizaï¿½ï¿½o, ano de conclusï¿½o do Ensino Mï¿½dio, notas nas demais provas, deficiï¿½ncia mental e deficiï¿½ncia fï¿½sica).
 \end{resumo}
 
-\section{Introdução}
+\section{Introduï¿½ï¿½o}
 %TODO: especificar "um subconjunto da base"?
-Nesta atividade, realizamos uma análise estatística da base de microdados do ENEM 2012.
-Como o objetivo final deste trabalho é o desenvolvimento de um algoritmo de predição da nota de redação, o primeiro passo consistiu no descarte de candidatos que não fizeram essa prova (14.672 dentre 50.000).
+Nesta atividade, realizamos uma anï¿½lise estatï¿½stica da base de microdados do ENEM 2012.
+Como o objetivo final deste trabalho ï¿½ o desenvolvimento de um algoritmo de prediï¿½ï¿½o da nota de redaï¿½ï¿½o, o primeiro passo consistiu no descarte de candidatos que nï¿½o fizeram essa prova (14.672 dentre 50.000).
 Em seguida, removemos dois \emph{outliers} de acordo com a idade: um candidato de 7 anos e outro de 114 anos.
-Após a remoção desses dois candidatos, a idade passou a variar entre 12 e 70 anos (inclusive), o que indica que os dois registros removidos estão incorretos.
-Ainda que não estejam, no entanto, a remoção de dois registros dentre mais de 30.000 é estatisticamente insignificamente e é justificada pela melhoria que isso proporciona na visualização dos gráficos.\footnote{Antes da remoção desses dois registros, mais de $\nicefrac{1}{3}$ da área do histograma de idades era ocupado por valores de 70 a 114, mesmo havendo apenas um registro com valor nessa faixa.}
+Apï¿½s a remoï¿½ï¿½o desses dois candidatos, a idade passou a variar entre 12 e 70 anos (inclusive), o que indica que os dois registros removidos estï¿½o incorretos.
+Ainda que nï¿½o estejam, no entanto, a remoï¿½ï¿½o de dois registros dentre mais de 30.000 ï¿½ estatisticamente insignificamente e ï¿½ justificada pela melhoria que isso proporciona na visualizaï¿½ï¿½o dos grï¿½ficos.\footnote{Antes da remoï¿½ï¿½o desses dois registros, mais de $\nicefrac{1}{3}$ da ï¿½rea do histograma de idades era ocupado por valores de 70 a 114, mesmo havendo apenas um registro com valor nessa faixa.}
 Restaram 35.326 candidatos.
 
-\section{Estatísticas gerais da base}
+\section{Estatï¿½sticas gerais da base}
 \label{sec:estatisticas-gerais}
-Antes de iniciarmos uma análise mais aprofundada da base de dados, coletamos algumas estatísticas a respeito dos seus principais atributos, dispostas nos gráficos a seguir.
-Conforme evidenciado pela \reffig{candidatos-por-idade}, a maioria dos candidatos possui até 20 anos de idade.
-Mais precisamente, dentre os 35.326 candidatos da base, 21.616 (61.2\%) possuem até 20 anos de idade e 28.205 (79.84\%) possuem até 25 anos de idade.
-Além disso, como mostra \reffig{candidatos-por-sexo}, há mais candidatos do sexo feminino (59.0\%) do que candidatos do sexo masculino (41.0\%).
+Antes de iniciarmos uma anï¿½lise mais aprofundada da base de dados, coletamos algumas estatï¿½sticas a respeito dos seus principais atributos, dispostas nos grï¿½ficos a seguir.
+Conforme evidenciado pela \reffig{candidatos-por-idade}, a maioria dos candidatos possui atï¿½ 20 anos de idade.
+Mais precisamente, dentre os 35.326 candidatos da base, 21.616 (61.2\%) possuem atï¿½ 20 anos de idade e 28.205 (79.84\%) possuem atï¿½ 25 anos de idade.
+Alï¿½m disso, como mostra \reffig{candidatos-por-sexo}, hï¿½ mais candidatos do sexo feminino (59.0\%) do que candidatos do sexo masculino (41.0\%).
 
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
@@ -71,29 +71,29 @@ Além disso, como mostra \reffig{candidatos-por-sexo}, há mais candidatos do sexo
     \end{figure}
 \end{minipage}
 
-Conforme evidenciado pela \reffig{candidatos-por-regiao}, a maioria dos candidatos (68.4\%) está concentrada nas regiões Nordeste e Sudeste.
-Além disso, de acordo com a \reffig{candidatos-por-localizacao}, a maioria dos candidatos não informou a localização (zona urbana ou zona rural).
+Conforme evidenciado pela \reffig{candidatos-por-regiao}, a maioria dos candidatos (68.4\%) estï¿½ concentrada nas regiï¿½es Nordeste e Sudeste.
+Alï¿½m disso, de acordo com a \reffig{candidatos-por-localizacao}, a maioria dos candidatos nï¿½o informou a localizaï¿½ï¿½o (zona urbana ou zona rural).
 Dentre aqueles que informaram, no entanto, a enorme maioria vive na zona urbana.
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \includegraphics[width=\linewidth]{../geral_candidatos-por-regiao.png}
-    \caption{Candidatos por região.}
+    \caption{Candidatos por regiï¿½o.}
     \label{fig:candidatos-por-regiao}
     \end{figure}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \includegraphics[width=\linewidth]{../geral_candidatos-por-localizacao.png}
-    \caption{Candidatos por localização.}
+    \caption{Candidatos por localizaï¿½ï¿½o.}
     \label{fig:candidatos-por-localizacao}
     \end{figure}
 \end{minipage}
 
 
 \vspace{1cm}
-De acordo com a \reffig{candidatos-por-escola}, a maioria dos candidatos não informou o tipo de escola que frequentou.
-Dentre aqueles que informaram, no entanto, a grande maioria estudou em escola pública.
-A \reffig{candidatos-por-nota} evidencia a concentração das notas de redação em torno da mediana.
+De acordo com a \reffig{candidatos-por-escola}, a maioria dos candidatos nï¿½o informou o tipo de escola que frequentou.
+Dentre aqueles que informaram, no entanto, a grande maioria estudou em escola pï¿½blica.
+A \reffig{candidatos-por-nota} evidencia a concentraï¿½ï¿½o das notas de redaï¿½ï¿½o em torno da mediana.
 Dos 35.326 canditados, apenas 1507 (4.27\%) obtiveram nota abaixo de 200 e apenas 1.174 (3.32\%) obtiveram nota acima de 800.
 
 \begin{minipage}{.5\textwidth}
@@ -106,22 +106,22 @@ Dos 35.326 canditados, apenas 1507 (4.27\%) obtiveram nota abaixo de 200 e apena
 \begin{minipage}{.5\textwidth}
 \begin{figure}[H]
 \centering\includegraphics[width=\linewidth]{../geral_candidatos-por-nota.png}
-\caption{Candidatos por nota de redação.}
+\caption{Candidatos por nota de redaï¿½ï¿½o.}
 \label{fig:candidatos-por-nota}
 \end{figure}
 \end{minipage}
 
-\section{Estatísticas por região}
-O próximo passo consistiu em gerar estatísticas separadas para cada região, visando a identificação de possíveis associações entre a região do candidado e demais atributos.
-Os resultados são apresentados a seguir.
+\section{Estatï¿½sticas por regiï¿½o}
+O prï¿½ximo passo consistiu em gerar estatï¿½sticas separadas para cada regiï¿½o, visando a identificaï¿½ï¿½o de possï¿½veis associaï¿½ï¿½es entre a regiï¿½o do candidado e demais atributos.
+Os resultados sï¿½o apresentados a seguir.
 
 \subsection{Idade}
-Conforme evidenciado pela \reftab{idade-por-regiao} e pela \reffig{idade-por-regiao}, a correlação entre a região do candidato e a idade é, em geral, desprezível. Essa correlação se acentua um pouco no caso da região Norte, cujos candidatos tendem a ser, em média, aproximadamente um ano mais velhos, mas ainda assim é pouco significativa.
+Conforme evidenciado pela \reftab{idade-por-regiao} e pela \reffig{idade-por-regiao}, a correlaï¿½ï¿½o entre a regiï¿½o do candidato e a idade ï¿½, em geral, desprezï¿½vel. Essa correlaï¿½ï¿½o se acentua um pouco no caso da regiï¿½o Norte, cujos candidatos tendem a ser, em mï¿½dia, aproximadamente um ano mais velhos, mas ainda assim ï¿½ pouco significativa.
 
 \begin{minipage}{.5\textwidth}
     \begin{table}[H]
     \begin{tabular}{ c c c c c }
-      \textbf{Região}  & \textbf{Candidatos} & \textbf{Média} & \textbf{Mediana} & \textbf{Desvio-padrão} \\
+      \textbf{Regiï¿½o}  & \textbf{Candidatos} & \textbf{Mï¿½dia} & \textbf{Mediana} & \textbf{Desvio-padrï¿½o} \\
       Brasil           & 35.326              & 22.03          & 19               & 7.48 \\
       Norte            & 3.517               & 22.94          & 20               & 7.52 \\
       Nordeste         & 11.140              & 22.03          & 19               & 7.15 \\
@@ -129,25 +129,25 @@ Conforme evidenciado pela \reftab{idade-por-regiao} e pela \reffig{idade-por-reg
       Sul              & 4.555               & 22.01          & 19               & 7.76 \\
       Centro-Oeste     & 3.090               & 22.41          & 19               & 7.81 \\
     \end{tabular}
-    \caption{Idade dos candidatos por região.}
+    \caption{Idade dos candidatos por regiï¿½o.}
     \label{tab:idade-por-regiao}
     \end{table}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \includegraphics[width=\linewidth]{../regiao_idade.png}
-    \caption{Idade dos candidatos por região.}
+    \caption{Idade dos candidatos por regiï¿½o.}
     \label{fig:idade-por-regiao}
     \end{figure}
 \end{minipage}
 
-\subsection{Nota da redação}
-A \reftab{nota-por-regiao} e a \reffig{nota-por-regiao} revelam uma leve associação entre a região do candidato e a nota da redação. Mais especificamente, candidatos do Sudesde, e em seguida do Sul, tendem a apresentar notas mais altas que os candidatos das demais regiões. A região com pior desempenho foi a Norte.
+\subsection{Nota da redaï¿½ï¿½o}
+A \reftab{nota-por-regiao} e a \reffig{nota-por-regiao} revelam uma leve associaï¿½ï¿½o entre a regiï¿½o do candidato e a nota da redaï¿½ï¿½o. Mais especificamente, candidatos do Sudesde, e em seguida do Sul, tendem a apresentar notas mais altas que os candidatos das demais regiï¿½es. A regiï¿½o com pior desempenho foi a Norte.
 
 \begin{minipage}{.5\textwidth}
     \begin{table}[H]
     \begin{tabular}{ c c c c c }
-      \textbf{Região}  & \textbf{Candidatos} & \textbf{Média} & \textbf{Mediana} & \textbf{Desvio-padrão} \\
+      \textbf{Regiï¿½o}  & \textbf{Candidatos} & \textbf{Mï¿½dia} & \textbf{Mediana} & \textbf{Desvio-padrï¿½o} \\
       Brasil           & 35.326              & 491.49          & 500             & 173.84 \\
       Norte            & 3.517               & 469.24          & 460             & 174.00 \\
       Nordeste         & 11.140              & 478.70          & 480             & 176.39 \\
@@ -155,90 +155,90 @@ A \reftab{nota-por-regiao} e a \reffig{nota-por-regiao} revelam uma leve associa
       Sul              & 4.555               & 489.52          & 500             & 169.68 \\
       Centro-Oeste     & 3.090               & 474.77          & 480             & 167.78 \\
     \end{tabular}
-    \caption{Nota de redação dos candidatos por região.}
+    \caption{Nota de redaï¿½ï¿½o dos candidatos por regiï¿½o.}
     \label{tab:nota-por-regiao}
     \end{table}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \includegraphics[width=\linewidth]{../regiao_nota.png}
-    \caption{Nota de redação dos candidatos por região.}
+    \caption{Nota de redaï¿½ï¿½o dos candidatos por regiï¿½o.}
     \label{fig:nota-por-regiao}
     \end{figure}
 \end{minipage}
 
-\section{Análise de correlações}
-Finalmente, elegemos alguns atributos para avaliar a existência de possíveis correlações com as notas de redação.
-Os resultados são apresentados a seguir.
+\section{Anï¿½lise de correlaï¿½ï¿½es}
+Finalmente, elegemos alguns atributos para avaliar a existï¿½ncia de possï¿½veis correlaï¿½ï¿½es com as notas de redaï¿½ï¿½o.
+Os resultados sï¿½o apresentados a seguir.
 
 \subsection{Idade}
 %TODO: melhorar essa imagem
-A \reffig{correlacao-idade} apresenta as notas de redação em função da idade dos candidatos e aponta para a inexistência de correlação significativa entre esses dois atributos.
-De fato, o coeficiente de correlação de Pearson entre essas duas variáveis vale aproximadamente $-0.11$, o que confirma essa hipótese.
+A \reffig{correlacao-idade} apresenta as notas de redaï¿½ï¿½o em funï¿½ï¿½o da idade dos candidatos e aponta para a inexistï¿½ncia de correlaï¿½ï¿½o significativa entre esses dois atributos.
+De fato, o coeficiente de correlaï¿½ï¿½o de Pearson entre essas duas variï¿½veis vale aproximadamente $-0.11$, o que confirma essa hipï¿½tese.
 
 \begin{figure}[H]
 \centering\includegraphics[width=.6\linewidth]{../correlacao_idade.png}
-\caption{Notas de redação em função da idade.}
+\caption{Notas de redaï¿½ï¿½o em funï¿½ï¿½o da idade.}
 \label{fig:correlacao-idade}
 \end{figure}
 
 \subsection{Sexo}
-A \reffig{correlacao-sexo} indica que não há diferenças significativas de desempenho entre candidatos do sexo masculino e do sexo feminino.
+A \reffig{correlacao-sexo} indica que nï¿½o hï¿½ diferenï¿½as significativas de desempenho entre candidatos do sexo masculino e do sexo feminino.
 
 \begin{figure}[H]
 \centering\includegraphics[width=.6\linewidth]{../correlacao_sexo.png}
-\caption{Distribuição das notas de redação para candidatos de cada sexo.}
+\caption{Distribuiï¿½ï¿½o das notas de redaï¿½ï¿½o para candidatos de cada sexo.}
 \label{fig:correlacao-sexo}
 \end{figure}
 
 \subsection{Tipo de escola}
-A \reffig{correlacao-escola} evidencia uma associação entre a nota da redação e o tipo da escola na qual o candidato estudou.
+A \reffig{correlacao-escola} evidencia uma associaï¿½ï¿½o entre a nota da redaï¿½ï¿½o e o tipo da escola na qual o candidato estudou.
 Mais especificamente, estudantes de escolas particulares tendem a obter notas mais altas.
 %TODO: ineflizmente, naoad pra usar iso na predicao porque...
 
 \begin{figure}[H]
 \centering\includegraphics[width=.5\linewidth]{../correlacao_escola.png}
-\caption{Distribuição das notas de redação para estudantes de escolas públicas e de escolas privadas.}
+\caption{Distribuiï¿½ï¿½o das notas de redaï¿½ï¿½o para estudantes de escolas pï¿½blicas e de escolas privadas.}
 \label{fig:correlacao-escola}
 \end{figure}
 
-\subsection{Localização}
-A \reffig{correlacao-localizacao} evidencia uma associação entre a nota da redação e a localização do candidato (zona urbana ou zona rural).
+\subsection{Localizaï¿½ï¿½o}
+A \reffig{correlacao-localizacao} evidencia uma associaï¿½ï¿½o entre a nota da redaï¿½ï¿½o e a localizaï¿½ï¿½o do candidato (zona urbana ou zona rural).
 Mais especificamente, candidatos da zona urbana tendem a obter notas mais altas.
-Na seção~\ref{sec:estatisticas-gerais}, mostramos que, dentre os candidatos que informaram a localização, a enorme maioria vive na zona urbana.
-A semelhança, na \reffig{correlacao-localizacao}, entre os gráficos dos candidatos que vivem na zona urbana e dos candidatos que não informaram a localização é um possível indício de que a maioria dos candidatos que não informaram localização também vive na zona urbana.
+Na seï¿½ï¿½o~\ref{sec:estatisticas-gerais}, mostramos que, dentre os candidatos que informaram a localizaï¿½ï¿½o, a enorme maioria vive na zona urbana.
+A semelhanï¿½a, na \reffig{correlacao-localizacao}, entre os grï¿½ficos dos candidatos que vivem na zona urbana e dos candidatos que nï¿½o informaram a localizaï¿½ï¿½o ï¿½ um possï¿½vel indï¿½cio de que a maioria dos candidatos que nï¿½o informaram localizaï¿½ï¿½o tambï¿½m vive na zona urbana.
 
 \begin{figure}[H]
 \centering\includegraphics[width=.45\linewidth]{../correlacao_localizacao.png}
-\caption{Distribuição das notas de redação para estudantes da zona urbana e da zona rural.}
+\caption{Distribuiï¿½ï¿½o das notas de redaï¿½ï¿½o para estudantes da zona urbana e da zona rural.}
 \label{fig:correlacao-localizacao}
 \end{figure}
 
-\subsection{Ano de conclusão do Ensino Médio}
-A \reffig{correlacao-ano-concluiu} aponta para a inexistência de correlação significativa entre a nota da redação e o ano no qual o candidato concluiu o Ensino Médio.\footnote{O valor ``.'' indica que o ano de conclusão do Ensino Médio não foi informado.}
+\subsection{Ano de conclusï¿½o do Ensino Mï¿½dio}
+A \reffig{correlacao-ano-concluiu} aponta para a inexistï¿½ncia de correlaï¿½ï¿½o significativa entre a nota da redaï¿½ï¿½o e o ano no qual o candidato concluiu o Ensino Mï¿½dio.\footnote{O valor ``.'' indica que o ano de conclusï¿½o do Ensino Mï¿½dio nï¿½o foi informado.}
 \begin{figure}[H]
 \centering\includegraphics[width=.45\linewidth]{../correlacao_ano_concluiu.png}
-\caption{Distribuição das notas de redação em função do ano de conclusão do Ensino Médio.}
+\caption{Distribuiï¿½ï¿½o das notas de redaï¿½ï¿½o em funï¿½ï¿½o do ano de conclusï¿½o do Ensino Mï¿½dio.}
 \label{fig:correlacao-ano-concluiu}
 \end{figure}
 
 \subsection{Notas nas demais provas}
-As Figuras~\ref{fig:correlacao-nota-ch}--\ref{fig:correlacao-nota-mt} apresentam uma forte evidência da existência de correlação linear positiva entre as notas obtidas pelos candidatos em redação e nas demais provas.
-De fato, os coeficientes de correlação de Pearson apresentados na \reftab{coeficiente-pearson-por-prova} confirmam essa hipótese.
-Ainda de acordo com a \reftab{coeficiente-pearson-por-prova}, a maior correlação ocorre com as provas de Ciências Humanas e Linguagens e Códigos.
+As Figuras~\ref{fig:correlacao-nota-ch}--\ref{fig:correlacao-nota-mt} apresentam uma forte evidï¿½ncia da existï¿½ncia de correlaï¿½ï¿½o linear positiva entre as notas obtidas pelos candidatos em redaï¿½ï¿½o e nas demais provas.
+De fato, os coeficientes de correlaï¿½ï¿½o de Pearson apresentados na \reftab{coeficiente-pearson-por-prova} confirmam essa hipï¿½tese.
+Ainda de acordo com a \reftab{coeficiente-pearson-por-prova}, a maior correlaï¿½ï¿½o ocorre com as provas de Ciï¿½ncias Humanas e Linguagens e Cï¿½digos.
 %TODO: footnote dizendo que foram desconsiderados candidatos que faltaram
 
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \centering\includegraphics[width=\linewidth]{../correlacao_nota_ch.png}
-    \caption{Notas de redação em função das notas em Ciências Humanas.}
+    \caption{Notas de redaï¿½ï¿½o em funï¿½ï¿½o das notas em Ciï¿½ncias Humanas.}
     \label{fig:correlacao-nota-ch}
     \end{figure}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \centering\includegraphics[width=\linewidth]{../correlacao_nota_cn.png}
-    \caption{Notas de redação em função das notas em Ciências da Natureza.}
+    \caption{Notas de redaï¿½ï¿½o em funï¿½ï¿½o das notas em Ciï¿½ncias da Natureza.}
     \label{fig:correlacao-nota-cn}
     \end{figure}
 \end{minipage}
@@ -248,46 +248,74 @@ Ainda de acordo com a \reftab{coeficiente-pearson-por-prova}, a maior correlação
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \centering\includegraphics[width=\linewidth]{../correlacao_nota_lc.png}
-    \caption{Notas de redação em função das notas em Linguagens e Códigos.}
+    \caption{Notas de redaï¿½ï¿½o em funï¿½ï¿½o das notas em Linguagens e Cï¿½digos.}
     \label{fig:correlacao-nota-lc}
     \end{figure}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \centering\includegraphics[width=\linewidth]{../correlacao_nota_mt.png}
-    \caption{Notas de redação em função das notas em Matemática.}
+    \caption{Notas de redaï¿½ï¿½o em funï¿½ï¿½o das notas em Matemï¿½tica.}
     \label{fig:correlacao-nota-mt}
     \end{figure}
 \end{minipage}
 
 \begin{table}[H]
 \centering\begin{tabular}{ c c }
-  \textbf{Prova}       & \textbf{Coeficiente de correlação} \\
-  Ciências Humanas     & 0.54 \\
-  Ciências da Natureza & 0.48 \\
-  Linguagens e Códigos & 0.54 \\
-  Matemática           & 0.46 \\
+  \textbf{Prova}       & \textbf{Coeficiente de correlaï¿½ï¿½o} \\
+  Ciï¿½ncias Humanas     & 0.54 \\
+  Ciï¿½ncias da Natureza & 0.48 \\
+  Linguagens e Cï¿½digos & 0.54 \\
+  Matemï¿½tica           & 0.46 \\
 \end{tabular}
-\caption{Coeficiente de correlação de Pearson entre as notas obtidas pelos candidatos em redação e em cada uma das outras provas.}
+\caption{Coeficiente de correlaï¿½ï¿½o de Pearson entre as notas obtidas pelos candidatos em redaï¿½ï¿½o e em cada uma das outras provas.}
 \label{tab:coeficiente-pearson-por-prova}
 \end{table}
 
-\subsection{Deficiência mental}
-A \reffig{correlacao-deficiencia-mental} indica que candidatos com deficiência mental apresentam desempenho significativamente inferior nas provas de redação.
+\subsection{Deficiï¿½ncia mental}
+A \reffig{correlacao-deficiencia-mental} indica que candidatos com deficiï¿½ncia mental apresentam desempenho significativamente inferior nas provas de redaï¿½ï¿½o.
 
 \begin{figure}[H]
 \centering\includegraphics[width=.55\linewidth]{../correlacao_deficiencia_mental.png}
-\caption{Distribuição das notas de redação para candidatos com e sem deficiência mental.}
+\caption{Distribuiï¿½ï¿½o das notas de redaï¿½ï¿½o para candidatos com e sem deficiï¿½ncia mental.}
 \label{fig:correlacao-deficiencia-mental}
 \end{figure}
 
-\subsection{Deficiência física}
-A \reffig{correlacao-deficiencia-fisica} indica que a nota mediana de redação dos candidatos com deficiência física é aproximadamente igual à nota mediana de redação dos candidatos sem deficiência física (em torno de 500).
-No entanto, a proporção de candidatos com nota acima de 500 é menor para portadores de deficiência física.
+\subsection{Deficiï¿½ncia fï¿½sica}
+A \reffig{correlacao-deficiencia-fisica} indica que a nota mediana de redaï¿½ï¿½o dos candidatos com deficiï¿½ncia fï¿½sica ï¿½ aproximadamente igual ï¿½ nota mediana de redaï¿½ï¿½o dos candidatos sem deficiï¿½ncia fï¿½sica (em torno de 500).
+No entanto, a proporï¿½ï¿½o de candidatos com nota acima de 500 ï¿½ menor para portadores de deficiï¿½ncia fï¿½sica.
 \begin{figure}[H]
 \centering\includegraphics[width=.55\linewidth]{../correlacao_deficiencia_fisica.png}
-\caption{Distribuição das notas de redação para candidatos com e sem deficiência física.}
+\caption{Distribuiï¿½ï¿½o das notas de redaï¿½ï¿½o para candidatos com e sem deficiï¿½ncia fï¿½sica.}
 \label{fig:correlacao-deficiencia-fisica}
 \end{figure}
+
+\section{ClassificaÃ§Ã£o}
+\subsection{PreparaÃ§Ã£o}
+Com o objetivo de prever o resultado da prova de redaÃ§Ã£o baseado nos outros dados disponÃ­veis, o conjuto de dados foi
+dividido em dois grupos: o conjunto de treinamento e o conjunto de teste. O primeiro contendo dois terÃ§os dos dados. Dessa
+forma o conjunto de treinamento pode ser oferecido como fonte de aprendizagem para um algorÃ­tmo de classificaÃ§Ã£o, enquanto
+que o conjunto de testes serÃ¡ utilizado para avaliar a qualidade da soluÃ§Ã£o como um todo. A coluna correspondente Ã  nota
+da redaÃ§Ã£o foi retirada do conjunto de testes, pois serÃ¡ prevista pelo algorÃ­tmo, enquanto que a nota da redaÃ§Ã£o no conjunto
+de treinamento foi discretizada em quatro grupos: Ã³timo, bom, regular e ruim. O mÃ©todo utilizado para separaÃ§Ã£o nos
+quatro grupos foi a divisÃ£o do conjunto de dados em quartis.
+
+O algorÃ­tmo escolhido para realizar a classificaÃ§Ã£o foi o KNN (k-nearest neighbors) por conta da sua simplicidade e
+resultados satisfatÃ³rios para o problema em questÃ£o.
+
+\subsection{AlgorÃ­tmo}
+Para cada prediÃ§Ã£o a ser feita a operaÃ§Ã£o do algorÃ­tmo KNN Ã© calcular a distÃ¢ncia euclidiana entre o ponto a ser previsto
+e todos os pontos do conjunto de treinamento, buscando os K pontos mais prÃ³ximos. Esses sÃ£o entÃ£o comparados e o valor que
+mais aparecer dentre eles se torna o resultado da classificaÃ§Ã£o. O valor de K pode ser ajustado para melhores resultados.
+
+ConsideraÃ§Ã£o importante Ã© que como o algoritmo utiliza distÃ¢ncia euclidiana para comparar duas amostras, as dimensÃµes
+precisam estar corretamente balanceadas, visando nÃ£o criar desvios em prol de uma coluna especÃ­fica. Para tal, os dados
+foram processados para tornar todos os valores em quantidades numÃ©ricas entre zero e um. Algumas das colunas do conjunto
+original de dados possuiam dados qualitativos, classificando o candidato dentre 2 ou mais grupos. Um exemplo Ã© a divisÃ£o
+de ter passado o ensino mÃ©dio em escola particular ou privada, ou o gÃªnero, ou ainda o estado onde realizou o exame. Nesse
+caso cada qualidade foi em uma coluna com caracterÃ­stica boleana, que armazena 1 caso a qualidade exista, 0 caso contrÃ¡rio.
+Dessa forma uma coluna que antes guadava o estado de origem do candidato agora Ã© transformada em 26 colunas, onde apenas
+uma armazena 1.
+
 
 \end{document}
