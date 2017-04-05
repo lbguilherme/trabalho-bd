@@ -17,10 +17,10 @@
      
 \sloppy
 
-\title{ClassificaÁ„o da nota de redaÁ„o na base de microdados do ENEM 2012 utilizando o algoritmo \emph{k-Nearest Neighbors}}
+\title{Classifica√ß√£o da nota de reda√ß√£o na base de microdados do ENEM 2012 utilizando o algoritmo \emph{k-Nearest Neighbors}}
 
 \author{Jonathan Coutinho Luz de Queiroz\inst{1} \\ Guilherme Lima Bernal\inst{1}}
-\address{Instituto de Matem·tica -- Universidade Federal da Bahia (UFBA)
+\address{Instituto de Matem√°tica -- Universidade Federal da Bahia (UFBA)
 \email{jonathanqueiroz@dcc.ufba.br}
 }
 
@@ -34,41 +34,41 @@
 \maketitle
 
 \begin{resumo}
-Neste trabalho, tomamos como base o algoritmo k-Nearest Neighbors (k-NN) para a prediÁ„o da nota de redaÁ„o na base de microdados do ENEM 2012.
-O primeiro passo consistiu na realizaÁ„o de uma an·lise estatÌstica sobre a base de dados.
-Em seguida, preparamos a base para a aplicaÁ„o do algoritmo de classificaÁ„o.
-Depois disso, amparados na an·lise estatÌstica previamente realizada, desenvolvemos uma vers„o inicial do algoritmo de classificaÁ„o.
-Finalmente, refinamos o algoritmo desenvolvido atravÈs de experimentos e analisamos a sua acur·cia.
+Neste trabalho, tomamos como base o algoritmo k-Nearest Neighbors (k-NN) para a predi√ß√£o da nota de reda√ß√£o na base de microdados do ENEM 2012.
+O primeiro passo consistiu na realiza√ß√£o de uma an√°lise estat√≠stica sobre a base de dados.
+Em seguida, preparamos a base para a aplica√ß√£o do algoritmo de classifica√ß√£o.
+Depois disso, amparados na an√°lise estat√≠stica previamente realizada, desenvolvemos uma vers√£o inicial do algoritmo de classifica√ß√£o.
+Finalmente, refinamos o algoritmo desenvolvido atrav√©s de experimentos e analisamos a sua acur√°cia.
 \end{resumo}
 
-%\section{IntroduÁ„o}
+%\section{Introdu√ß√£o}
 %TODO: write an introduction
 
-\section{IntroduÁ„o}
+\section{Introdu√ß√£o}
 
-O restante deste artigo est· dividido da seguinte forma:
+O restante deste artigo est√° dividido da seguinte forma:
 
-\section{An·lise estatÌstica}
+\section{An√°lise estat√≠stica}
 \ref{sec:analise-estatistica}
-O primeiro passo da an·lise estatÌstica consistiu no estudo isolado dos principais atributos da base (idade, sexo, regi„o, localizaÁ„o, tipo de escola e nota de redaÁ„o).
-%Em seguida, foi feita uma comparaÁ„o entre as idades e as notas de redaÁ„o dos candidatos de cada regi„o do paÌs.
-%Finalmente, analisamos a correlaÁ„o entre a nota de redaÁ„o e diversos outros atributos (idade, sexo, tipo de escola, localizaÁ„o, ano de conclus„o do Ensino MÈdio, notas nas demais provas, deficiÍncia mental e deficiÍncia fÌsica).
-Em seguida, analisamos a correlaÁ„o entre a nota de redaÁ„o e diversos outros atributos (idade, sexo, tipo de escola, tipo de localizaÁ„o, ano de conclus„o do Ensino MÈdio, notas nas demais provas, deficiÍncia mental e deficiÍncia fÌsica).
+O primeiro passo da an√°lise estat√≠stica consistiu no estudo isolado dos principais atributos da base (idade, sexo, regi√£o, localiza√ß√£o, tipo de escola e nota de reda√ß√£o).
+%Em seguida, foi feita uma compara√ß√£o entre as idades e as notas de reda√ß√£o dos candidatos de cada regi√£o do pa√≠s.
+%Finalmente, analisamos a correla√ß√£o entre a nota de reda√ß√£o e diversos outros atributos (idade, sexo, tipo de escola, localiza√ß√£o, ano de conclus√£o do Ensino M√©dio, notas nas demais provas, defici√™ncia mental e defici√™ncia f√≠sica).
+Em seguida, analisamos a correla√ß√£o entre a nota de reda√ß√£o e diversos outros atributos (idade, sexo, tipo de escola, tipo de localiza√ß√£o, ano de conclus√£o do Ensino M√©dio, notas nas demais provas, defici√™ncia mental e defici√™ncia f√≠sica).
 
-Como o objetivo final deste trabalho foi o desenvolvimento de um algoritmo de prediÁ„o da nota de redaÁ„o, descartamos os candidatos que n„o fizeram essa prova (14.672 dentre 50.000).
+Como o objetivo final deste trabalho foi o desenvolvimento de um algoritmo de predi√ß√£o da nota de reda√ß√£o, descartamos os candidatos que n√£o fizeram essa prova (14.672 dentre 50.000).
 Em seguida, removemos dois \emph{outliers} de acordo com a idade: um candidato de 7 anos e outro de 114 anos.
-ApÛs a remoÁ„o desses dois candidatos, a idade passou a variar entre 12 e 70 anos (inclusive), o que indica que os dois registros removidos est„o incorretos.
-Ainda que n„o estejam, no entanto, a remoÁ„o de dois registros dentre mais de 30.000 È estatisticamente insignificamente e È justificada pela melhoria que isso proporciona na visualizaÁ„o dos gr·ficos.\footnote{Antes da remoÁ„o desses dois registros, mais de $\nicefrac{1}{3}$ da ·rea do histograma de idades era ocupado por valores de 70 a 114, mesmo havendo apenas um registro com valor nessa faixa.}
+Ap√≥s a remo√ß√£o desses dois candidatos, a idade passou a variar entre 12 e 70 anos (inclusive), o que indica que os dois registros removidos est√£o incorretos.
+Ainda que n√£o estejam, no entanto, a remo√ß√£o de dois registros dentre mais de 30.000 √© estatisticamente insignificamente e √© justificada pela melhoria que isso proporciona na visualiza√ß√£o dos gr√°ficos.\footnote{Antes da remo√ß√£o desses dois registros, mais de $\nicefrac{1}{3}$ da √°rea do histograma de idades era ocupado por valores de 70 a 114, mesmo havendo apenas um registro com valor nessa faixa.}
 Restaram 35.326 candidatos.
 % TODO: move to introduction?
 
-\subsection{EstatÌsticas gerais da base}
+\subsection{Estat√≠sticas gerais da base}
 \label{subsec:estatisticas-gerais}
-%Antes de iniciarmos uma an·lise mais aprofundada da base de dados, coletamos algumas estatÌsticas a respeito dos seus principais atributos, dispostas nos gr·ficos a seguir.
-Coletamos algumas estatÌsticas a respeito dos principais atributos da base, dispostas nos gr·ficos a seguir.
-Conforme evidenciado pela \reffig{candidatos-por-idade}, a maioria dos candidatos possui atÈ 20 anos de idade.
-Mais precisamente, dentre os 35.326 candidatos da base, 21.616 (61.2\%) possuem atÈ 20 anos de idade e 28.205 (79.84\%) possuem atÈ 25 anos de idade.
-AlÈm disso, como mostra \reffig{candidatos-por-sexo}, h· mais candidatos do sexo feminino (59.0\%) do que candidatos do sexo masculino (41.0\%).
+%Antes de iniciarmos uma an√°lise mais aprofundada da base de dados, coletamos algumas estat√≠sticas a respeito dos seus principais atributos, dispostas nos gr√°ficos a seguir.
+Coletamos algumas estat√≠sticas a respeito dos principais atributos da base, dispostas nos gr√°ficos a seguir.
+Conforme evidenciado pela \reffig{candidatos-por-idade}, a maioria dos candidatos possui at√© 20 anos de idade.
+Mais precisamente, dentre os 35.326 candidatos da base, 21.616 (61.2\%) possuem at√© 20 anos de idade e 28.205 (79.84\%) possuem at√© 25 anos de idade.
+Al√©m disso, como mostra \reffig{candidatos-por-sexo}, h√° mais candidatos do sexo feminino (59.0\%) do que candidatos do sexo masculino (41.0\%).
 
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
@@ -87,29 +87,29 @@ AlÈm disso, como mostra \reffig{candidatos-por-sexo}, h· mais candidatos do sexo
 
 
 \vspace{1cm}
-Conforme evidenciado pela \reffig{candidatos-por-regiao}, a maioria dos candidatos (68.4\%) est· concentrada nas regiıes Nordeste e Sudeste.
-AlÈm disso, de acordo com a \reffig{candidatos-por-localizacao}, a maioria dos candidatos n„o informou a localizaÁ„o (zona urbana ou zona rural).
+Conforme evidenciado pela \reffig{candidatos-por-regiao}, a maioria dos candidatos (68.4\%) est√° concentrada nas regi√µes Nordeste e Sudeste.
+Al√©m disso, de acordo com a \reffig{candidatos-por-localizacao}, a maioria dos candidatos n√£o informou a localiza√ß√£o (zona urbana ou zona rural).
 Dentre aqueles que informaram, no entanto, a enorme maioria vive na zona urbana.
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \includegraphics[width=.9\linewidth]{../geral_candidatos-por-regiao.png}
-    \caption{Candidatos por regi„o.}
+    \caption{Candidatos por regi√£o.}
     \label{fig:candidatos-por-regiao}
     \end{figure}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \includegraphics[width=.9\linewidth]{../geral_candidatos-por-localizacao.png}
-    \caption{Candidatos por localizaÁ„o.}
+    \caption{Candidatos por localiza√ß√£o.}
     \label{fig:candidatos-por-localizacao}
     \end{figure}
 \end{minipage}
 
 
 \vspace{1cm}
-De acordo com a \reffig{candidatos-por-escola}, a maioria dos candidatos n„o informou o tipo de escola que frequentou.
-Dentre aqueles que informaram, no entanto, a grande maioria estudou em escola p˙blica.
-A \reffig{candidatos-por-nota} evidencia a concentraÁ„o das notas de redaÁ„o em torno da mediana.
+De acordo com a \reffig{candidatos-por-escola}, a maioria dos candidatos n√£o informou o tipo de escola que frequentou.
+Dentre aqueles que informaram, no entanto, a grande maioria estudou em escola p√∫blica.
+A \reffig{candidatos-por-nota} evidencia a concentra√ß√£o das notas de reda√ß√£o em torno da mediana.
 Dos 35.326 canditados, apenas 1507 (4.27\%) obtiveram nota abaixo de 200 e apenas 1.174 (3.32\%) obtiveram nota acima de 800.
 
 \begin{minipage}{.5\textwidth}
@@ -122,23 +122,23 @@ Dos 35.326 canditados, apenas 1507 (4.27\%) obtiveram nota abaixo de 200 e apena
 \begin{minipage}{.5\textwidth}
 \begin{figure}[H]
 \centering\includegraphics[width=\linewidth]{../geral_candidatos-por-nota.png}
-\caption{Candidatos por nota de redaÁ„o.}
+\caption{Candidatos por nota de reda√ß√£o.}
 \label{fig:candidatos-por-nota}
 \end{figure}
 \end{minipage}
 
 \iffalse
-\subsection{EstatÌsticas por regi„o}
-O prÛximo passo consistiu em gerar estatÌsticas separadas para cada regi„o, visando a identificaÁ„o de possÌveis associaÁıes entre a regi„o do candidado e demais atributos.
-Os resultados s„o apresentados a seguir.
+\subsection{Estat√≠sticas por regi√£o}
+O pr√≥ximo passo consistiu em gerar estat√≠sticas separadas para cada regi√£o, visando a identifica√ß√£o de poss√≠veis associa√ß√µes entre a regi√£o do candidado e demais atributos.
+Os resultados s√£o apresentados a seguir.
 
 \subsubsection{Idade}
-Conforme evidenciado pela \reftab{idade-por-regiao} e pela \reffig{idade-por-regiao}, a correlaÁ„o entre a regi„o do candidato e a idade È, em geral, desprezÌvel. Essa correlaÁ„o se acentua um pouco no caso da regi„o Norte, cujos candidatos tendem a ser, em mÈdia, aproximadamente um ano mais velhos, mas ainda assim È pouco significativa.
+Conforme evidenciado pela \reftab{idade-por-regiao} e pela \reffig{idade-por-regiao}, a correla√ß√£o entre a regi√£o do candidato e a idade √©, em geral, desprez√≠vel. Essa correla√ß√£o se acentua um pouco no caso da regi√£o Norte, cujos candidatos tendem a ser, em m√©dia, aproximadamente um ano mais velhos, mas ainda assim √© pouco significativa.
 
 \begin{minipage}{.5\textwidth}
     \begin{table}[H]
     \begin{tabular}{ c c c c c }
-      \textbf{Regi„o}  & \textbf{Candidatos} & \textbf{MÈdia} & \textbf{Mediana} & \textbf{Desvio-padr„o} \\
+      \textbf{Regi√£o}  & \textbf{Candidatos} & \textbf{M√©dia} & \textbf{Mediana} & \textbf{Desvio-padr√£o} \\
       Brasil           & 35.326              & 22.03          & 19               & 7.48 \\
       Norte            & 3.517               & 22.94          & 20               & 7.52 \\
       Nordeste         & 11.140              & 22.03          & 19               & 7.15 \\
@@ -146,25 +146,25 @@ Conforme evidenciado pela \reftab{idade-por-regiao} e pela \reffig{idade-por-reg
       Sul              & 4.555               & 22.01          & 19               & 7.76 \\
       Centro-Oeste     & 3.090               & 22.41          & 19               & 7.81 \\
     \end{tabular}
-    \caption{Idade dos candidatos por regi„o.}
+    \caption{Idade dos candidatos por regi√£o.}
     \label{tab:idade-por-regiao}
     \end{table}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \includegraphics[width=\linewidth]{../regiao_idade.png}
-    \caption{Idade dos candidatos por regi„o.}
+    \caption{Idade dos candidatos por regi√£o.}
     \label{fig:idade-por-regiao}
     \end{figure}
 \end{minipage}
 
-\subsubsection{Nota da redaÁ„o}
-A \reftab{nota-por-regiao} e a \reffig{nota-por-regiao} revelam uma leve associaÁ„o entre a regi„o do candidato e a nota da redaÁ„o. Mais especificamente, candidatos do Sudesde, e em seguida do Sul, tendem a apresentar notas mais altas que os candidatos das demais regiıes. A regi„o com pior desempenho foi a Norte.
+\subsubsection{Nota da reda√ß√£o}
+A \reftab{nota-por-regiao} e a \reffig{nota-por-regiao} revelam uma leve associa√ß√£o entre a regi√£o do candidato e a nota da reda√ß√£o. Mais especificamente, candidatos do Sudesde, e em seguida do Sul, tendem a apresentar notas mais altas que os candidatos das demais regi√µes. A regi√£o com pior desempenho foi a Norte.
 
 \begin{minipage}{.5\textwidth}
     \begin{table}[H]
     \begin{tabular}{ c c c c c }
-      \textbf{Regi„o}  & \textbf{Candidatos} & \textbf{MÈdia} & \textbf{Mediana} & \textbf{Desvio-padr„o} \\
+      \textbf{Regi√£o}  & \textbf{Candidatos} & \textbf{M√©dia} & \textbf{Mediana} & \textbf{Desvio-padr√£o} \\
       Brasil           & 35.326              & 491.49          & 500             & 173.84 \\
       Norte            & 3.517               & 469.24          & 460             & 174.00 \\
       Nordeste         & 11.140              & 478.70          & 480             & 176.39 \\
@@ -172,91 +172,91 @@ A \reftab{nota-por-regiao} e a \reffig{nota-por-regiao} revelam uma leve associa
       Sul              & 4.555               & 489.52          & 500             & 169.68 \\
       Centro-Oeste     & 3.090               & 474.77          & 480             & 167.78 \\
     \end{tabular}
-    \caption{Nota de redaÁ„o dos candidatos por regi„o.}
+    \caption{Nota de reda√ß√£o dos candidatos por regi√£o.}
     \label{tab:nota-por-regiao}
     \end{table}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \includegraphics[width=\linewidth]{../regiao_nota.png}
-    \caption{Nota de redaÁ„o dos candidatos por regi„o.}
+    \caption{Nota de reda√ß√£o dos candidatos por regi√£o.}
     \label{fig:nota-por-regiao}
     \end{figure}
 \end{minipage}
 \fi
 
-\subsection{An·lise de correlaÁıes}
-Finalmente, elegemos alguns atributos para avaliar a existÍncia de possÌveis correlaÁıes com as notas de redaÁ„o.
-Os resultados s„o apresentados a seguir.
+\subsection{An√°lise de correla√ß√µes}
+Finalmente, elegemos alguns atributos para avaliar a exist√™ncia de poss√≠veis correla√ß√µes com as notas de reda√ß√£o.
+Os resultados s√£o apresentados a seguir.
 
 \subsubsection{Idade}
 %TODO: melhorar essa imagem
-A \reffig{correlacao-idade} apresenta as notas de redaÁ„o em funÁ„o da idade dos candidatos e aponta para a inexistÍncia de correlaÁ„o significativa entre esses dois atributos.
-De fato, o coeficiente de correlaÁ„o de Pearson entre essas duas vari·veis vale aproximadamente $-0.11$, o que confirma essa hipÛtese.
+A \reffig{correlacao-idade} apresenta as notas de reda√ß√£o em fun√ß√£o da idade dos candidatos e aponta para a inexist√™ncia de correla√ß√£o significativa entre esses dois atributos.
+De fato, o coeficiente de correla√ß√£o de Pearson entre essas duas vari√°veis vale aproximadamente $-0.11$, o que confirma essa hip√≥tese.
 
 \begin{figure}[H]
 \centering\includegraphics[width=.5\linewidth]{../correlacao_idade.png}
-\caption{Notas de redaÁ„o em funÁ„o da idade.}
+\caption{Notas de reda√ß√£o em fun√ß√£o da idade.}
 \label{fig:correlacao-idade}
 \end{figure}
 
 \subsubsection{Sexo}
-A \reffig{correlacao-sexo} indica que a diferenÁa de desempenho entre candidatos do sexo masculino e do sexo feminino È pequena.
+A \reffig{correlacao-sexo} indica que a diferen√ßa de desempenho entre candidatos do sexo masculino e do sexo feminino √© pequena.
 
 \begin{figure}[H]
 \centering\includegraphics[width=.5\linewidth]{../correlacao_sexo.png}
-\caption{DistribuiÁ„o das notas de redaÁ„o para candidatos de cada sexo.}
+\caption{Distribui√ß√£o das notas de reda√ß√£o para candidatos de cada sexo.}
 \label{fig:correlacao-sexo}
 \end{figure}
 
 \subsubsection{Tipo de escola}
-A \reffig{correlacao-escola} evidencia uma associaÁ„o entre a nota da redaÁ„o e o tipo da escola na qual o candidato estudou.
+A \reffig{correlacao-escola} evidencia uma associa√ß√£o entre a nota da reda√ß√£o e o tipo da escola na qual o candidato estudou.
 Mais especificamente, estudantes de escolas particulares tendem a obter notas mais altas.
 %TODO: ineflizmente, naoad pra usar iso na predicao porque...
 
 \begin{figure}[H]
 \centering\includegraphics[width=.5\linewidth]{../correlacao_escola.png}
-\caption{DistribuiÁ„o das notas de redaÁ„o para estudantes de escolas p˙blicas e de escolas privadas.}
+\caption{Distribui√ß√£o das notas de reda√ß√£o para estudantes de escolas p√∫blicas e de escolas privadas.}
 \label{fig:correlacao-escola}
 \end{figure}
 
-\subsubsection{LocalizaÁ„o}
-A \reffig{correlacao-localizacao} evidencia uma associaÁ„o entre a nota da redaÁ„o e a localizaÁ„o do candidato (zona urbana ou zona rural).
+\subsubsection{Localiza√ß√£o}
+A \reffig{correlacao-localizacao} evidencia uma associa√ß√£o entre a nota da reda√ß√£o e a localiza√ß√£o do candidato (zona urbana ou zona rural).
 Mais especificamente, candidatos da zona urbana tendem a obter notas mais altas.
-Na subseÁ„o~\ref{subsec:estatisticas-gerais}, mostramos que, dentre os candidatos que informaram a localizaÁ„o, a enorme maioria vive na zona urbana.
-A semelhanÁa, na \reffig{correlacao-localizacao}, entre os gr·ficos dos candidatos que vivem na zona urbana e dos candidatos que n„o informaram a localizaÁ„o È um possÌvel indÌcio de que a maioria dos candidatos que n„o informaram localizaÁ„o tambÈm vive na zona urbana.
+Na subse√ß√£o~\ref{subsec:estatisticas-gerais}, mostramos que, dentre os candidatos que informaram a localiza√ß√£o, a enorme maioria vive na zona urbana.
+A semelhan√ßa, na \reffig{correlacao-localizacao}, entre os gr√°ficos dos candidatos que vivem na zona urbana e dos candidatos que n√£o informaram a localiza√ß√£o √© um poss√≠vel ind√≠cio de que a maioria dos candidatos que n√£o informaram localiza√ß√£o tamb√©m vive na zona urbana.
 
 \begin{figure}[H]
 \centering\includegraphics[width=.44\linewidth]{../correlacao_localizacao.png}
-\caption{DistribuiÁ„o das notas de redaÁ„o para estudantes da zona urbana e da zona rural.}
+\caption{Distribui√ß√£o das notas de reda√ß√£o para estudantes da zona urbana e da zona rural.}
 \label{fig:correlacao-localizacao}
 \end{figure}
 
-\subsubsection{Ano de conclus„o do Ensino MÈdio}
-A \reffig{correlacao-ano-concluiu} aponta para a inexistÍncia de correlaÁ„o significativa entre a nota da redaÁ„o e o ano no qual o candidato concluiu o Ensino MÈdio.\footnote{O valor ``.'' indica que o ano de conclus„o do Ensino MÈdio n„o foi informado.}
+\subsubsection{Ano de conclus√£o do Ensino M√©dio}
+A \reffig{correlacao-ano-concluiu} aponta para a inexist√™ncia de correla√ß√£o significativa entre a nota da reda√ß√£o e o ano no qual o candidato concluiu o Ensino M√©dio.\footnote{O valor ``.'' indica que o ano de conclus√£o do Ensino M√©dio n√£o foi informado.}
 \begin{figure}[H]
 \centering\includegraphics[width=.44\linewidth]{../correlacao_ano_concluiu.png}
-\caption{DistribuiÁ„o das notas de redaÁ„o em funÁ„o do ano de conclus„o do Ensino MÈdio.}
+\caption{Distribui√ß√£o das notas de reda√ß√£o em fun√ß√£o do ano de conclus√£o do Ensino M√©dio.}
 \label{fig:correlacao-ano-concluiu}
 \end{figure}
 
 \subsubsection{Notas nas demais provas}
-As Figuras~\ref{fig:correlacao-nota-ch}--\ref{fig:correlacao-nota-mt} apresentam uma forte evidÍncia da existÍncia de correlaÁ„o positiva entre as notas obtidas pelos candidatos em redaÁ„o e nas demais provas.
-De fato, os coeficientes de correlaÁ„o de Pearson apresentados na \reftab{coeficiente-pearson-por-prova} confirmam essa hipÛtese.
-Ainda de acordo com a \reftab{coeficiente-pearson-por-prova}, a maior correlaÁ„o ocorre com as provas de CiÍncias Humanas e Linguagens e CÛdigos.
+As Figuras~\ref{fig:correlacao-nota-ch}--\ref{fig:correlacao-nota-mt} apresentam uma forte evid√™ncia da exist√™ncia de correla√ß√£o positiva entre as notas obtidas pelos candidatos em reda√ß√£o e nas demais provas.
+De fato, os coeficientes de correla√ß√£o de Pearson apresentados na \reftab{coeficiente-pearson-por-prova} confirmam essa hip√≥tese.
+Ainda de acordo com a \reftab{coeficiente-pearson-por-prova}, a maior correla√ß√£o ocorre com as provas de Ci√™ncias Humanas e Linguagens e C√≥digos.
 %TODO: footnote dizendo que foram desconsiderados candidatos que faltaram
 
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \centering\includegraphics[width=.86\linewidth]{../correlacao_nota_ch.png}
-    \caption{Notas de redaÁ„o em funÁ„o das notas em CiÍncias Humanas.}
+    \caption{Notas de reda√ß√£o em fun√ß√£o das notas em Ci√™ncias Humanas.}
     \label{fig:correlacao-nota-ch}
     \end{figure}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \centering\includegraphics[width=.86\linewidth]{../correlacao_nota_cn.png}
-    \caption{Notas de redaÁ„o em funÁ„o das notas em CiÍncias da Natureza.}
+    \caption{Notas de reda√ß√£o em fun√ß√£o das notas em Ci√™ncias da Natureza.}
     \label{fig:correlacao-nota-cn}
     \end{figure}
 \end{minipage}
@@ -264,134 +264,134 @@ Ainda de acordo com a \reftab{coeficiente-pearson-por-prova}, a maior correlaÁ„o
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \centering\includegraphics[width=.86\linewidth]{../correlacao_nota_lc.png}
-    \caption{Notas de redaÁ„o em funÁ„o das notas em Linguagens e CÛdigos.}
+    \caption{Notas de reda√ß√£o em fun√ß√£o das notas em Linguagens e C√≥digos.}
     \label{fig:correlacao-nota-lc}
     \end{figure}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \centering\includegraphics[width=.86\linewidth]{../correlacao_nota_mt.png}
-    \caption{Notas de redaÁ„o em funÁ„o das notas em Matem·tica.}
+    \caption{Notas de reda√ß√£o em fun√ß√£o das notas em Matem√°tica.}
     \label{fig:correlacao-nota-mt}
     \end{figure}
 \end{minipage}
 
 \begin{table}[H]
 \centering\begin{tabular}{ c c }
-  \textbf{Prova}       & \textbf{Coeficiente de correlaÁ„o} \\
-  CiÍncias Humanas     & 0.54 \\
-  CiÍncias da Natureza & 0.48 \\
-  Linguagens e CÛdigos & 0.54 \\
-  Matem·tica           & 0.46 \\
+  \textbf{Prova}       & \textbf{Coeficiente de correla√ß√£o} \\
+  Ci√™ncias Humanas     & 0.54 \\
+  Ci√™ncias da Natureza & 0.48 \\
+  Linguagens e C√≥digos & 0.54 \\
+  Matem√°tica           & 0.46 \\
 \end{tabular}
-\caption{Coeficiente de correlaÁ„o de Pearson entre as notas obtidas pelos candidatos em redaÁ„o e em cada uma das outras provas.}
+\caption{Coeficiente de correla√ß√£o de Pearson entre as notas obtidas pelos candidatos em reda√ß√£o e em cada uma das outras provas.}
 \label{tab:coeficiente-pearson-por-prova}
 \end{table}
 
-\subsubsection{DeficiÍncia mental}
-A \reffig{correlacao-deficiencia-mental} indica que candidatos com deficiÍncia mental apresentam desempenho significativamente inferior nas provas de redaÁ„o.
+\subsubsection{Defici√™ncia mental}
+A \reffig{correlacao-deficiencia-mental} indica que candidatos com defici√™ncia mental apresentam desempenho significativamente inferior nas provas de reda√ß√£o.
 
 \begin{figure}[H]
 \centering\includegraphics[width=.5\linewidth]{../correlacao_deficiencia_mental.png}
-\caption{DistribuiÁ„o das notas de redaÁ„o para candidatos com e sem deficiÍncia mental.}
+\caption{Distribui√ß√£o das notas de reda√ß√£o para candidatos com e sem defici√™ncia mental.}
 \label{fig:correlacao-deficiencia-mental}
 \end{figure}
 
-\subsubsection{DeficiÍncia fÌsica}
-A \reffig{correlacao-deficiencia-fisica} indica que a nota mediana de redaÁ„o dos candidatos com deficiÍncia fÌsica È aproximadamente igual ‡ nota mediana de redaÁ„o dos candidatos sem deficiÍncia fÌsica (em torno de 500).
-No entanto, a proporÁ„o de candidatos com nota acima de 500 È menor para portadores de deficiÍncia fÌsica.
+\subsubsection{Defici√™ncia f√≠sica}
+A \reffig{correlacao-deficiencia-fisica} indica que a nota mediana de reda√ß√£o dos candidatos com defici√™ncia f√≠sica √© aproximadamente igual √† nota mediana de reda√ß√£o dos candidatos sem defici√™ncia f√≠sica (em torno de 500).
+No entanto, a propor√ß√£o de candidatos com nota acima de 500 √© menor para portadores de defici√™ncia f√≠sica.
 \begin{figure}[H]
 \centering\includegraphics[width=.5\linewidth]{../correlacao_deficiencia_fisica.png}
-\caption{DistribuiÁ„o das notas de redaÁ„o para candidatos com e sem deficiÍncia fÌsica.}
+\caption{Distribui√ß√£o das notas de reda√ß√£o para candidatos com e sem defici√™ncia f√≠sica.}
 \label{fig:correlacao-deficiencia-fisica}
 \end{figure}
 
-\section{PrÈ-processamento}
+\section{Pr√©-processamento}
 \label{sec:pre-processamento}
-Nesta etapa, preparamos a base de dados para utilizaÁ„o no algoritmo de classificaÁ„o.
-Optamos por remover colunas majoritariamente por razıes tÈcnicas (n˙mero de identificaÁ„o do candidato, por exemplo, alÈm de outros campos descritos a seguir). Consequentemente, colunas que simplesmente suspeit·vamos serem poucos relevantes para a classificaÁ„o, devido ‡ an·lise estatÌstica previamente realizada, foram mantidas.
-Essa abordagem permitiu que a an·lise estatÌstica atuasse como um guia durante o desenvolvimento do algoritmo de classificaÁ„o, ao invÈs de determinar completamente os atributos nele utilizados.
+Nesta etapa, preparamos a base de dados para utiliza√ß√£o no algoritmo de classifica√ß√£o.
+Optamos por remover colunas majoritariamente por raz√µes t√©cnicas (n√∫mero de identifica√ß√£o do candidato, por exemplo, al√©m de outros campos descritos a seguir). Consequentemente, colunas que simplesmente suspeit√°vamos serem poucos relevantes para a classifica√ß√£o, devido √† an√°lise estat√≠stica previamente realizada, foram mantidas.
+Essa abordagem permitiu que a an√°lise estat√≠stica atuasse como um guia durante o desenvolvimento do algoritmo de classifica√ß√£o, ao inv√©s de determinar completamente os atributos nele utilizados.
 
-De forma geral, atributos numÈricos foram mapeados para um subintervalo de [0, 1] de forma a torn·-los aproximadamente igualmente relevantes para a classificaÁ„o, pelo menos a princÌpio.
-Caso isso n„o fosse feito, atributos associados a intervalos de valores mais amplos (particularmente as notas nas provas objetivas) execeriam maior influÍncia que os demais.
+De forma geral, atributos num√©ricos foram mapeados para um subintervalo de [0, 1] de forma a torn√°-los aproximadamente igualmente relevantes para a classifica√ß√£o, pelo menos a princ√≠pio.
+Caso isso n√£o fosse feito, atributos associados a intervalos de valores mais amplos (particularmente as notas nas provas objetivas) execeriam maior influ√™ncia que os demais.
 Similarmente, atributos qualitativos nominais com $C > 2$ categorias foram separados em $C$ atributos booleanos.
-Isso foi feito porque a atribuiÁ„o arbitr·ria de valores numÈricos a cada uma das categorias induziria uma ordenaÁ„o indevida entre essas categorias.
-As operaÁıes realizadas durante a normalizaÁ„o s„o descritas mais detalhadamente a seguir.
+Isso foi feito porque a atribui√ß√£o arbitr√°ria de valores num√©ricos a cada uma das categorias induziria uma ordena√ß√£o indevida entre essas categorias.
+As opera√ß√µes realizadas durante a normaliza√ß√£o s√£o descritas mais detalhadamente a seguir.
 
 \begin{itemize}
-    \item Foi criada a coluna UF\_INSC\_IGUAL\_PROVA, que guarda ``1'' se UF\_INSC for igual ao UF\_MUNICIPIO\_PROVA, indicando que o candidato n„o mudou de estado para fazer a prova. ``0'' caso contr·rio.
-    \item UF\_INSC foi expandido para um total de 26 colunas, cada uma contendo ``1'' ou ``0'' para indicar se o candidato fez a prova nesse estado ou n„o. Nenhum candidato poder ter mais de um estado marcado como ``1''. InformaÁıes adicionais sobre a localizaÁ„o do candidato (nome do municÌpio, cÛdigo do municÌcio, etc.) foram removidas.
+    \item Foi criada a coluna UF\_INSC\_IGUAL\_PROVA, que guarda ``1'' se UF\_INSC for igual ao UF\_MUNICIPIO\_PROVA, indicando que o candidato n√£o mudou de estado para fazer a prova. ``0'' caso contr√°rio.
+    \item UF\_INSC foi expandido para um total de 26 colunas, cada uma contendo ``1'' ou ``0'' para indicar se o candidato fez a prova nesse estado ou n√£o. Nenhum candidato poder ter mais de um estado marcado como ``1''. Informa√ß√µes adicionais sobre a localiza√ß√£o do candidato (nome do munic√≠pio, c√≥digo do munic√≠cio, etc.) foram removidas.
     \item De forma similar, TP\_SEXO foi expandido para duas colunas: GENERO\_HOMEM e GENERO\_MULHER, com apenas uma delas sendo marcada como ``1''.
     \item As colunas NOTA\_CN, NOTA\_CH, NOTA\_LC e NOTA\_MT passaram a guardar a nota do candidato em cada uma das provas. Para que o valor fosse consistente de 0 a 1, essa nota foi dividida por 1000.
-    \item V·rias colunas que guardavam as opÁıes marcadas pelo candidato, gabarito, identificaÁ„o da prova e afins foram removidas por serem irrelevantes para obtenÁ„o do resultado.
-    \item A coluna TP\_ESCOLA foi expandida para duas colunas: ESCOLA\_PUBLICA e ESCOLA\_PRIVADA. Para a maioria dos candidatos, o tipo de escola n„o foi informado, e portanto ambas as colunas ficaram com valor falso. Demais informaÁıes sobre a escola e a entidade certificadora do candidato (nome, municÌpio, etc.) foram removidas.
-    Analogamente, a coluna  ID\_LOCALIZACAO foi expandida para duas colunas: LOCALIZACAO\_URBANA e LOCALIZACAO\_RURAL. Para a maioria dos candidatos, o tipo de localizaÁ„o n„o foi informado, e portanto ambas as colunas ficaram com valor falso.
-    \item A idade foi normalizada para valores de 0 a 1 atravÈs de uma divis„o por 100. Dessa forma, a menor idade passou a ser 0.12 e a maior idade passou a ser 0.70.
-    \item TP\_COR\_RACA foi dividido em 5 colunas, uma com cada cor/raÁa. Cada uma possui ``1'' se ela È verdadeira para o candidato. Nenhum candidato tem duas dessas colunas como verdadeiras.
+    \item V√°rias colunas que guardavam as op√ß√µes marcadas pelo candidato, gabarito, identifica√ß√£o da prova e afins foram removidas por serem irrelevantes para obten√ß√£o do resultado.
+    \item A coluna TP\_ESCOLA foi expandida para duas colunas: ESCOLA\_PUBLICA e ESCOLA\_PRIVADA. Para a maioria dos candidatos, o tipo de escola n√£o foi informado, e portanto ambas as colunas ficaram com valor falso. Demais informa√ß√µes sobre a escola e a entidade certificadora do candidato (nome, munic√≠pio, etc.) foram removidas.
+    Analogamente, a coluna  ID\_LOCALIZACAO foi expandida para duas colunas: LOCALIZACAO\_URBANA e LOCALIZACAO\_RURAL. Para a maioria dos candidatos, o tipo de localiza√ß√£o n√£o foi informado, e portanto ambas as colunas ficaram com valor falso.
+    \item A idade foi normalizada para valores de 0 a 1 atrav√©s de uma divis√£o por 100. Dessa forma, a menor idade passou a ser 0.12 e a maior idade passou a ser 0.70.
+    \item TP\_COR\_RACA foi dividido em 5 colunas, uma com cada cor/ra√ßa. Cada uma possui ``1'' se ela √© verdadeira para o candidato. Nenhum candidato tem duas dessas colunas como verdadeiras.
     \item Analogamente, TP\_ESTADO\_CIVIL foi dividido em 4 colunas booleanas: ESTADO\_CIVIL\_SOLTEIRO, ESTADO\_CIVIL\_CASADO, ESTADO\_CIVIL\_DIVORCIADO e ESTADO\_CIVIL\_VIUVO.
-    \item ST\_CONCLUSAO foi dividido em 4 colunas seguindo o mesmo princÌpio: ENSINO\_MEDIO\_CONCLUIDO (alunos que j· haviam concluÌdo o Ensino MÈdio quando a prova foi aplicada), ENSINO\_MEDIO\_EM\_2012 (alunos que estavam concluindo o Ensimo MÈdio no mesmo ano de aplicaÁ„o da prova), ENSINO\_MEDIO\_DEPOIS\_2012 (alunos que sÛ concluirÌam o Ensino MÈdio em anos posteriores ‡ aplicaÁ„o da prova) e ENSINO\_MEDIO\_NAO\_FAZ (alunos que nem haviam concluÌdo previamente nem estavam cursando o Ensino MÈdio). O ano exato de conclus„o do Ensino MÈdio, quando informado, foi descartado.
+    \item ST\_CONCLUSAO foi dividido em 4 colunas seguindo o mesmo princ√≠pio: ENSINO\_MEDIO\_CONCLUIDO (alunos que j√° haviam conclu√≠do o Ensino M√©dio quando a prova foi aplicada), ENSINO\_MEDIO\_EM\_2012 (alunos que estavam concluindo o Ensimo M√©dio no mesmo ano de aplica√ß√£o da prova), ENSINO\_MEDIO\_DEPOIS\_2012 (alunos que s√≥ concluir√≠am o Ensino M√©dio em anos posteriores √† aplica√ß√£o da prova) e ENSINO\_MEDIO\_NAO\_FAZ (alunos que nem haviam conclu√≠do previamente nem estavam cursando o Ensino M√©dio). O ano exato de conclus√£o do Ensino M√©dio, quando informado, foi descartado.
 \end{itemize}
 
-\section{ClassificaÁ„o}
+\section{Classifica√ß√£o}
 \label{sec:classificacao}
-O objetivo final do trabalho foi a classificaÁ„o dos candidatos em quatro classes, de acordo com a nota obtida na prova de redaÁ„o: ``ruim'', ``regular'', ``boa'' e ``Ûtima''.
-A determinaÁ„o da classe de cada candidato foi feita atravÈs da divis„o do dataset original em quartis: candidatos no primeiro quartil foram classificados como Ûtimos, candidatos no segundo quartil como bons, e assim por diante.
-Esse processo resulta em uma divis„o equitativa dos candidatos em classes, e consequentemente simplifica uma avaliaÁ„o justa do algoritmo de classificaÁ„o desenvolvido.
+O objetivo final do trabalho foi a classifica√ß√£o dos candidatos em quatro classes, de acordo com a nota obtida na prova de reda√ß√£o: ``ruim'', ``regular'', ``boa'' e ``√≥tima''.
+A determina√ß√£o da classe de cada candidato foi feita atrav√©s da divis√£o do dataset original em quartis: candidatos no primeiro quartil foram classificados como √≥timos, candidatos no segundo quartil como bons, e assim por diante.
+Esse processo resulta em uma divis√£o equitativa dos candidatos em classes, e consequentemente simplifica uma avalia√ß√£o justa do algoritmo de classifica√ß√£o desenvolvido.
 
-O algoritmo de classificaÁ„o utilizado foi o \emph{k-Nearest Neighbors} (\emph{k-NN}).
-Durante o treinamento desse algoritmo, todas as observaÁıes do conjunto de treinamento s„o convertidas em vetores no espaÁo de caracterÌsticas.
-(Por isso, È importante que a etapa de prÈ-processamento gere apenas atributos numÈricos.)
-Depois disso, sempre que uma nova observaÁ„o precisa ser classificada, s„o identificadas as $k$ observaÁıes mais prÛximas dela no conjunto de treinamento (no nosso caso, de acordo com a dist‚ncia de Euclides).
-A classe predita È simplesmente a classe mais frequente dentre essas $k$ observaÁıes.
-Em todos os experimentos realizados, utilizamos $\nicefrac{2}{3}$ da base para treinamento e o restante para avaliaÁ„o do algoritmo.
+O algoritmo de classifica√ß√£o utilizado foi o \emph{k-Nearest Neighbors} (\emph{k-NN}).
+Durante o treinamento desse algoritmo, todas as observa√ß√µes do conjunto de treinamento s√£o convertidas em vetores no espa√ßo de caracter√≠sticas.
+(Por isso, √© importante que a etapa de pr√©-processamento gere apenas atributos num√©ricos.)
+Depois disso, sempre que uma nova observa√ß√£o precisa ser classificada, s√£o identificadas as $k$ observa√ß√µes mais pr√≥ximas dela no conjunto de treinamento (no nosso caso, de acordo com a dist√¢ncia de Euclides).
+A classe predita √© simplesmente a classe mais frequente dentre essas $k$ observa√ß√µes.
+Em todos os experimentos realizados, utilizamos $\nicefrac{2}{3}$ da base para treinamento e o restante para avalia√ß√£o do algoritmo.
 
-Amparados na an·lise estatÌstica previamente realizada, elegemos um conjunto inicial de atributos que julgamos relevantes para a classificaÁ„o: IDADE, IN\_DEFICIENCIA\_MENTAL, NOTA\_CN, NOTA\_CH, NOTA\_LC, NOTA\_MT, ESCOLA\_PRIVADA e LOCALIZACAO\_RURAL.
-Em seguida, refinamos essa seleÁ„o inicial atravÈs de experimentos envolvendo a inserÁ„o e a remoÁ„o de atributos, sempre utilizando $k=3$.
+Amparados na an√°lise estat√≠stica previamente realizada, elegemos um conjunto inicial de atributos que julgamos relevantes para a classifica√ß√£o: IDADE, IN\_DEFICIENCIA\_MENTAL, NOTA\_CN, NOTA\_CH, NOTA\_LC, NOTA\_MT, ESCOLA\_PRIVADA e LOCALIZACAO\_RURAL.
+Em seguida, refinamos essa sele√ß√£o inicial atrav√©s de experimentos envolvendo a inser√ß√£o e a remo√ß√£o de atributos, sempre utilizando $k=3$.
 O conjunto de atributos que apresentou melhor resultado foi o seguinte: GENERO\_HOMEM, IDADE, IN\_DEFICIENCIA\_MENTAL, NOTA\_CN, NOTA\_CH, NOTA\_LC, NOTA\_MT e ESCOLA\_PRIVADA.
-TambÈm experimentamos multiplicar os valores de alguns atributos (em especial, notas nas provas objetivas) por n˙meros reais maiores que um, de forma a atribuir-lhes maior peso, mas n„o houve melhora significativa no resultado.
+Tamb√©m experimentamos multiplicar os valores de alguns atributos (em especial, notas nas provas objetivas) por n√∫meros reais maiores que um, de forma a atribuir-lhes maior peso, mas n√£o houve melhora significativa no resultado.
 
-Finalmente, avaliamos a acur·cia do algoritmo desenvolvido com diferentes valores de $k$.
+Finalmente, avaliamos a acur√°cia do algoritmo desenvolvido com diferentes valores de $k$.
 As Fig.~\ref{fig:tab1}--\ref{fig:tab100} mostram, para todos os pares de classes $(X, Y)$, quantos candidatos da classe $X$ foram classificados como sendo da classe $Y$.
 As Fig.~\ref{fig:graf1}--\ref{fig:graf100} sumarizam os tipos de erros cometidos pelo algoritmo.
-Os gr·ficos evidenciam que, em geral, melhores resultados s„o obtidos com maiores valores de $k$.
+Os gr√°ficos evidenciam que, em geral, melhores resultados s√£o obtidos com maiores valores de $k$.
 
 \begin{figure}[H]
 \centering\includegraphics[width=.60\linewidth]{plot-white1.png}
-\caption{An·lise dos resultados obtidos pelo \emph{k-NN} com k=1.}
+\caption{An√°lise dos resultados obtidos pelo \emph{k-NN} com k=1.}
 \label{fig:tab1}
 \end{figure}
 
 \begin{figure}[H]
 \centering\includegraphics[width=.60\linewidth]{plot-white10.png}
-\caption{An·lise dos resultados obtidos pelo \emph{k-NN} com k=10.}
+\caption{An√°lise dos resultados obtidos pelo \emph{k-NN} com k=10.}
 \label{fig:tab10}
 \end{figure}
 
 \begin{figure}[H]
 \centering\includegraphics[width=.60\linewidth]{plot-white100.png}
-\caption{An·lise dos resultados obtidos pelo \emph{k-NN} com k=100.}
+\caption{An√°lise dos resultados obtidos pelo \emph{k-NN} com k=100.}
 \label{fig:tab100}
 \end{figure}
 
 \begin{figure}[H]
 \centering\includegraphics[width=.65\linewidth]{graf-white1.png}
-\caption{ClassificaÁıes por tipo de erro do \emph{k-NN} com k=1.}
+\caption{Classifica√ß√µes por tipo de erro do \emph{k-NN} com k=1.}
 \label{fig:graf1}
 \end{figure}
 
 \begin{figure}[H]
 \centering\includegraphics[width=.65\linewidth]{graf-white10.png}
-\caption{ClassificaÁıes por tipo de erro do \emph{k-NN} com k=10.}
+\caption{Classifica√ß√µes por tipo de erro do \emph{k-NN} com k=10.}
 \label{fig:graf10}
 \end{figure}
 
 \begin{figure}[H]
 \centering\includegraphics[width=.65\linewidth]{graf-white100.png}
-\caption{ClassificaÁıes por tipo de erro do \emph{k-NN} com k=100.}
+\caption{Classifica√ß√µes por tipo de erro do \emph{k-NN} com k=100.}
 \label{fig:graf100}
 \end{figure}
 
-\section{Conclus„o}
+\section{Conclus√£o}
 \label{sec:conclusao}
 
 \end{document}
