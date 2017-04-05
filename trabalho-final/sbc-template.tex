@@ -363,6 +363,7 @@ Finalmente, avaliamos a acurácia do algoritmo desenvolvido com diferentes valor
 As Fig.~\ref{fig:tab1}--\ref{fig:tab100} mostram, para todos os pares de classes $(X, Y)$, quantos candidatos da classe $X$ foram classificados como sendo da classe $Y$.
 As Fig.~\ref{fig:graf1}--\ref{fig:graf100} sumarizam os tipos de erros cometidos pelo algoritmo.
 Os gráficos evidenciam que, em geral, melhores resultados são obtidos com maiores valores de $k$.
+No entanto, essa melhora ocorre principalmente para as classes mais extremas (''ótimo`` e ''ruim```); os resultados da classe ''regular`` melhoram de forma menos significativa e os resultados da classe ''bom`` pioram.
 
 \begin{figure}[H]
 \centering\includegraphics[width=.60\linewidth]{plot-white1.png}
@@ -402,5 +403,6 @@ Os gráficos evidenciam que, em geral, melhores resultados são obtidos com maio
 
 \section{Conclusão}
 \label{sec:conclusao}
+Os experimentos realizados sugerem que os melhores resultados são obtidos pelo \emph{k-NN} com $k=100$
 
 \end{document}
