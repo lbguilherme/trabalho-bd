@@ -194,7 +194,8 @@ Ainda que não estejam, no entanto, a remoção de dois registros dentre mais de
 % \fi
 
 \subsection{Análise de correlações}
-Finalmente, elegemos alguns atributos para avaliar a existência de possíveis correlações com as notas de redação.
+Elegemos alguns atributos para avaliar a existência de possíveis correlações com as notas de redação, a saber: idade, sexo, tipo de escola (pública ou privada), localização (zona urbana ou zona rural), ano de conclusão do Ensino Médio e notas nas provas objetivas.
+Dentre todos esses atributos, aqueles que apresentaram maior correlação com a nota de redação foram as notas nas provas objetivas.
 
 % \subsubsection{Idade}
 % %TODO: melhorar essa imagem
@@ -248,11 +249,12 @@ Finalmente, elegemos alguns atributos para avaliar a existência de possíveis c
 % \end{figure}
 
 % \subsubsection{Notas nas demais provas}
-As Figuras~\ref{fig:correlacao-nota-ch}--\ref{fig:correlacao-nota-mt} apresentam uma forte evidência da existência de correlação positiva entre as notas obtidas pelos candidatos em redação e nas demais provas.
+As Figuras~\ref{fig:correlacao-nota-ch}--\ref{fig:correlacao-nota-mt} apresentam uma evidência da existência de correlação positiva entre as notas obtidas pelos candidatos em redação e nas demais provas.
 De fato, os coeficientes de correlação de Pearson apresentados na \reftab{coeficiente-pearson-por-prova} confirmam essa hipótese.
 Ainda de acordo com a \reftab{coeficiente-pearson-por-prova}, a maior correlação ocorre com as provas de Ciências Humanas e Linguagens e Códigos.
 %TODO: footnote dizendo que foram desconsiderados candidatos que faltaram
 
+\vspace{-0.8cm}
 \begin{minipage}{.5\textwidth}
     \begin{figure}[H]
     \centering\includegraphics[width=.86\linewidth]{../correlacao_nota_ch.png}
