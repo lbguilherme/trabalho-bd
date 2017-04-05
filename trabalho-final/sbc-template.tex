@@ -403,6 +403,10 @@ No entanto, essa melhora ocorre principalmente para as classes mais extremas (''
 
 \section{Conclusão}
 \label{sec:conclusao}
-Os experimentos realizados sugerem que os melhores resultados são obtidos pelo \emph{k-NN} com $k=100$
+Os experimentos realizados indicam que resultados satisfatórios são obtidos pelo \emph{k-NN} com $k=100$, sem comprometer demasiadamente a acurácia das predições para as classes intermediárias (em particular, para a classe ``bom''), com o seguinte conjunto de atributos: GENERO\_HOMEM, IDADE, IN\_DEFICIENCIA\_MENTAL, NOTA\_CN, NOTA\_CH, NOTA\_LC, NOTA\_MT e ESCOLA\_PRIVADA.
+
+Além disso, a análise estatística revelou que os atributos mais significativos para a predição da nota de redação são as notas nas provas objetivas.
+As Figuras~\ref{fig:correlacao-nota-ch}--\ref{fig:correlacao-nota-mt} mostram que a correlação entre as notas das provas objetivas e as notas de redação está longe de ser perfeita, e portanto sugerem a existência de uma barreira natural para o desempenho de qualquer algoritmo de classificação.
+No entanto, é definitivamente possível que algoritmos de classificação mais rebuscados se aproximem mais dessa barreira, apresentando melhores resultados; consequentemente, essa parece uma direção proveitosa para trabalhos futuros.
 
 \end{document}
