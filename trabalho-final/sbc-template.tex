@@ -44,7 +44,12 @@ Finalmente, refinamos o algoritmo desenvolvido através de experimentos e analisa
 %\section{Introdução}
 %TODO: write an introduction
 
+\section{Introdução}
+
+O restante deste artigo está dividido da seguinte forma:
+
 \section{Análise estatística}
+\ref{sec:analise-estatistica}
 O primeiro passo da análise estatística consistiu no estudo isolado dos principais atributos da base (idade, sexo, região, localização, tipo de escola e nota de redação).
 %Em seguida, foi feita uma comparação entre as idades e as notas de redação dos candidatos de cada região do país.
 %Finalmente, analisamos a correlação entre a nota de redação e diversos outros atributos (idade, sexo, tipo de escola, localização, ano de conclusão do Ensino Médio, notas nas demais provas, deficiência mental e deficiência física).
@@ -302,6 +307,7 @@ No entanto, a proporção de candidatos com nota acima de 500 é menor para portado
 \end{figure}
 
 \section{Pré-processamento}
+\label{sec:pre-processamento}
 Nesta etapa, preparamos a base de dados para utilização no algoritmo de classificação.
 Optamos por remover colunas majoritariamente por razões técnicas (número de identificação do candidato, por exemplo, além de outros campos descritos a seguir). Consequentemente, colunas que simplesmente suspeitávamos serem poucos relevantes para a classificação, devido à análise estatística previamente realizada, foram mantidas.
 Essa abordagem permitiu que a análise estatística atuasse como um guia durante o desenvolvimento do algoritmo de classificação, ao invés de determinar completamente os atributos nele utilizados.
@@ -327,6 +333,7 @@ As operações realizadas durante a normalização são descritas mais detalhadamente
 \end{itemize}
 
 \section{Classificação}
+\label{sec:classificacao}
 O objetivo final do trabalho foi a classificação dos candidatos em quatro classes, de acordo com a nota obtida na prova de redação: ``ruim'', ``regular'', ``boa'' e ``ótima''.
 A determinação da classe de cada candidato foi feita através da divisão do dataset original em quartis: candidatos no primeiro quartil foram classificados como ótimos, candidatos no segundo quartil como bons, e assim por diante.
 Esse processo resulta em uma divisão equitativa dos candidatos em classes, e consequentemente simplifica uma avaliação justa do algoritmo de classificação desenvolvido.
@@ -383,5 +390,8 @@ Os gráficos evidenciam que, em geral, melhores resultados são obtidos com maiore
 \caption{Classificações por tipo de erro do \emph{k-NN} com k=100.}
 \label{fig:graf100}
 \end{figure}
+
+\section{Conclusão}
+\label{sec:conclusao}
 
 \end{document}
